@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -14,6 +15,18 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Layout } from "@/components/layout";
+
+const HeroScene3D = dynamic(
+  () => import("@/components/3d/hero-scene").then((mod) => mod.HeroScene3D),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="h-16 w-16 animate-spin rounded-full border-2 border-white/20 border-t-white/80" />
+      </div>
+    ),
+  }
+);
 
 const roles = [
   "Data Analyst",
@@ -82,11 +95,14 @@ export default function Home() {
   return (
     <Layout>
       <section className="relative min-h-screen overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-gradient-to-br from-white/5 to-transparent blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-gradient-to-tr from-white/5 to-transparent blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-white/3 to-transparent blur-2xl" />
-        </div>
+        <Suspense fallback={
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-gradient-to-br from-white/5 to-transparent blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-gradient-to-tr from-white/5 to-transparent blur-3xl" />
+          </div>
+        }>
+          <HeroScene3D />
+        </Suspense>
 
         <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pt-20 pb-16 sm:px-6 lg:px-8">
           <motion.div
