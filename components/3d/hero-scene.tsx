@@ -2,7 +2,7 @@
 
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Float, Line } from "@react-three/drei";
+import { Float } from "@react-three/drei";
 import * as THREE from "three";
 
 function DataBar({
@@ -162,56 +162,6 @@ function ChartPanel({ position }: { position: [number, number, number] }) {
   );
 }
 
-function DataFlowParticles() {
-  const count = 50;
-  const mesh = useRef<THREE.InstancedMesh>(null);
-  const dummy = useMemo(() => new THREE.Object3D(), []);
-
-  const particles = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < count; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.random() * Math.PI;
-      const radius = 3 + Math.random() * 4;
-      temp.push({
-        position: [
-          radius * Math.sin(phi) * Math.cos(theta),
-          (Math.random() - 0.5) * 4,
-          radius * Math.sin(phi) * Math.sin(theta),
-        ],
-        speed: 0.5 + Math.random() * 0.5,
-        offset: Math.random() * Math.PI * 2,
-      });
-    }
-    return temp;
-  }, []);
-
-  useFrame((state) => {
-    if (!mesh.current) return;
-
-    particles.forEach((particle, i) => {
-      const t = state.clock.elapsedTime * particle.speed + particle.offset;
-      const x = particle.position[0] + Math.sin(t) * 0.5;
-      const y = particle.position[1] + Math.cos(t * 1.3) * 0.3;
-      const z = particle.position[2] + Math.sin(t * 0.7) * 0.5;
-
-      dummy.position.set(x, y, z);
-      const scale = 0.03 + Math.sin(t * 2) * 0.015;
-      dummy.scale.set(scale, scale, scale);
-      dummy.updateMatrix();
-      mesh.current!.setMatrixAt(i, dummy.matrix);
-    });
-    mesh.current.instanceMatrix.needsUpdate = true;
-  });
-
-  return (
-    <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
-      <sphereGeometry args={[1, 6, 6]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={0.6} />
-    </instancedMesh>
-  );
-}
-
 function GlowingOrb({
   position,
   color,
@@ -247,6 +197,44 @@ function GlowingOrb({
   );
 }
 
+function DataConnection({ start, end, color }: { start: [number, number, number]; end: [number, number, number]; color: string }) {
+  const meshRef = useRef<THREE.Mesh>(null);
+
+  const { midpoint, length, direction } = useMemo(() => {
+    const startVec = new THREE.Vector3(...start);
+    const endVec = new THREE.Vector3(...end);
+    const mid = startVec.clone().add(endVec).multiplyScalar(0.5);
+    const len = startVec.distanceTo(endVec);
+    const dir = endVec.clone().sub(startVec).normalize();
+    return { midpoint: mid, length: len, direction: dir };
+  }, [start, end]);
+
+  useFrame((state) => {
+    if (meshRef.current && meshRef.current.material) {
+      (meshRef.current.material as THREE.MeshStandardMaterial).opacity =
+        0.3 + Math.sin(state.clock.elapsedTime * 2) * 0.2;
+    }
+  });
+
+  const quaternion = useMemo(() => {
+    const up = new THREE.Vector3(0, 1, 0);
+    const quat = new THREE.Quaternion();
+    quat.setFromUnitVectors(up, direction);
+    return quat;
+  }, [direction]);
+
+  return (
+    <mesh
+      ref={meshRef}
+      position={midpoint.toArray()}
+      quaternion={quaternion}
+    >
+      <cylinderGeometry args={[0.02, 0.02, length, 8]} />
+      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5} transparent opacity={0.5} />
+    </mesh>
+  );
+}
+
 function Scene() {
   const groupRef = useRef<THREE.Group>(null);
   const { pointer } = useThree();
@@ -274,13 +262,6 @@ function Scene() {
   ];
 
   const nodeColors = ["#60a5fa", "#4ade80", "#f472b6", "#c084fc"];
-
-  const lines = useMemo(() => [
-    { start: nodePositions[0], end: nodePositions[1] },
-    { start: nodePositions[1], end: nodePositions[2] },
-    { start: nodePositions[2], end: nodePositions[3] },
-    { start: nodePositions[3], end: nodePositions[0] },
-  ], []);
 
   return (
     <>
@@ -349,22 +330,14 @@ function Scene() {
           <DataNode key={i} position={pos} color={nodeColors[i]} size={0.3} />
         ))}
 
-        {lines.map((line, i) => (
-          <Line
-            key={i}
-            points={[new THREE.Vector3(...line.start), new THREE.Vector3(...line.end)]}
-            color={nodeColors[i]}
-            lineWidth={2}
-            transparent
-            opacity={0.5}
-          />
-        ))}
+        <DataConnection start={nodePositions[0]} end={nodePositions[1]} color={nodeColors[0]} />
+        <DataConnection start={nodePositions[1]} end={nodePositions[2]} color={nodeColors[1]} />
+        <DataConnection start={nodePositions[2]} end={nodePositions[3]} color={nodeColors[2]} />
+        <DataConnection start={nodePositions[3]} end={nodePositions[0]} color={nodeColors[3]} />
 
         <GlowingOrb position={[0, 0, 0]} color="#60a5fa" size={0.5} />
         <GlowingOrb position={[-5, 2, -2]} color="#4ade80" size={0.3} />
         <GlowingOrb position={[5, -2, -1]} color="#f472b6" size={0.35} />
-
-        <DataFlowParticles />
       </group>
     </>
   );
