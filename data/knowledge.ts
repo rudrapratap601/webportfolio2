@@ -1,131 +1,303 @@
 const knowledge = {
-  "about": {
-    "name": "Rudrapratap Sarma",
-    "role": "Data Analyst",
-    "location": "New Delhi, India",
-    "experience": "5+ years",
-    "summary": "I'm a data analyst specializing in transforming complex datasets into actionable business insights. I have expertise in SQL, Python, Tableau, and Power BI, with a focus on creating data-driven solutions that impact business decisions.",
-    "education": [
-      {
-        "degree": "B.Sc. in Statistics",
-        "institution": "University",
-        "year": "2020",
-        "details": "Specialized in Data Science with a CGPA of 8.5/10. Published research on statistical modeling and won inter-college data science competition."
-      }
+  personal: {
+    name: "Rudrapratap Sarma",
+    title: "Data Analytics Trainee",
+    headline:
+      "Python â€¢ SQL â€¢ Power BI â€¢ Streamlit â€¢ MS Excel â€¢ Data Analytics",
+
+    summary:
+      "Rudrapratap Sarma is a results-oriented Data Analytics trainee with hands-on experience in data extraction, cleaning, preprocessing, exploratory data analysis, dashboard development, and business intelligence. He builds end-to-end analytics projects using Python, SQL, PostgreSQL, Power BI, Streamlit, Pandas, and Plotly. His goal is to build AI-powered analytics products and become an AI/ML Engineer in the future.",
+
+    location: "Dharmanagar, Tripura, India",
+
+    email: "rudrapratapsarma549@gmail.com",
+
+    availability:
+      "Open to internships, freelance projects, remote opportunities and data analytics collaborations."
+  },
+
+  education: {
+    degree: "Bachelor of Computer Applications (BCA)",
+    university: "Manipal University Jaipur",
+    mode: "Online & Distance",
+    duration: "2025 - 2028",
+    status: "Currently Pursuing"
+  },
+
+  experience: [
+    {
+      company: "Jobyaari",
+      role: "Data Operations & Analytics Intern",
+      duration: "May 2026 - June 2026",
+
+      responsibilities: [
+        "Extracted structured data from 35+ government job notification PDFs.",
+        "Created a structured dataset containing over 500 job opportunities.",
+        "Performed data cleaning, validation and qualification mapping.",
+        "Prepared backend-ready datasets for publishing pipelines.",
+        "Collaborated on workflow optimization and dataset organization."
+      ],
+
+      skillsUsed: [
+        "Python",
+        "Excel",
+        "Data Cleaning",
+        "Data Validation",
+        "Data Structuring"
+      ]
+    },
+
+    {
+      company: "YBI Foundation",
+      role: "Data Analytics Trainee",
+      duration: "Sep 2025 - Dec 2025",
+
+      responsibilities: [
+        "Completed project-based training on Python, Pandas, NumPy and Machine Learning fundamentals.",
+        "Worked on multiple real-world datasets.",
+        "Performed preprocessing, EDA and business insight generation.",
+        "Built independent analytics projects."
+      ]
+    }
+  ],
+
+  skills: {
+    programming: [
+      "Python",
+      "SQL"
+    ],
+
+    libraries: [
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "Plotly",
+      "SQLAlchemy",
+      "Streamlit"
+    ],
+
+    databases: [
+      "PostgreSQL",
+      "MySQL"
+    ],
+
+    visualization: [
+      "Power BI",
+      "MS Excel",
+      "Interactive Dashboards",
+      "Pivot Tables",
+      "Charts",
+      "Slicers",
+      "Timelines"
+    ],
+
+    analytics: [
+      "Data Cleaning",
+      "Data Preprocessing",
+      "Exploratory Data Analysis",
+      "KPI Analysis",
+      "Trend Analysis",
+      "Root Cause Analysis",
+      "Correlation Analysis",
+      "Outlier Detection",
+      "Behavioral Analysis",
+      "Market Sentiment Analysis",
+      "Statistical Analysis"
+    ],
+
+    tools: [
+      "Git",
+      "GitHub",
+      "Jupyter Notebook"
     ]
   },
-  "skills": {
-    "technical": [
-      {"name": "SQL", "level": "Expert", "description": "Expert in complex queries, optimization, and database design. Experience with PostgreSQL, MySQL, SQL Server, and BigQuery."},
-      {"name": "Python", "level": "Advanced", "description": "Proficient in data analysis libraries (Pandas, NumPy), visualization (Matplotlib, Seaborn), and machine learning (Scikit-learn)."},
-      {"name": "Tableau", "level": "Expert", "description": "Certified Tableau Desktop Specialist with extensive experience building interactive dashboards and data stories."},
-      {"name": "Power BI", "level": "Advanced", "description": "Microsoft certified Power BI Data Analyst with expertise in DAX, data modeling, and enterprise reporting."},
-      {"name": "Excel", "level": "Expert", "description": "Advanced Excel skills including pivot tables, VLOOKUP, macros, and power query for data transformation."},
-      {"name": "R", "level": "Intermediate", "description": "Statistical analysis and visualization using R for academic research and data science projects."},
-      {"name": "Looker", "level": "Intermediate", "description": "Experience building LookML models and creating business intelligence dashboards in Looker."},
-      {"name": "BigQuery", "level": "Advanced", "description": "Expertise in Google Cloud's BigQuery for large-scale data analysis and warehousing."}
-    ],
-    "soft": ["Data Storytelling", "Problem Solving", "Team Collaboration", "Continuous Learning", "Communication"],
-    "tools": ["PostgreSQL", "MySQL", "MongoDB", "Docker", "Git", "Jupyter", "Databricks", "AWS", "Azure", "Airflow"]
-  },
-  "experience": [
+
+  projects: [
     {
-      "company": "Tech Corp",
-      "role": "Senior Data Analyst",
-      "period": "Jan 2024 - Present",
-      "description": "Leading business intelligence initiatives and data strategy. Managing a team of 3 analysts.",
-      "achievements": [
-        "Built enterprise-level Tableau dashboards serving 500+ users",
-        "Implemented automated reporting saving 40 hours monthly",
-        "Led migration from legacy systems to cloud-based analytics"
+      name: "Data Analytics Platform",
+
+      type: "Full Stack Analytics Platform",
+
+      technologies: [
+        "Python",
+        "Streamlit",
+        "PostgreSQL",
+        "Supabase",
+        "Pandas",
+        "Plotly",
+        "SQLAlchemy"
+      ],
+
+      description:
+        "A full-stack analytics platform allowing users to upload, clean, connect and analyze multiple datasets.",
+
+      features: [
+        "Multi dataset upload",
+        "Automatic SQL JOIN generation",
+        "Interactive dashboards",
+        "Five SQL aggregations",
+        "Statistical insights",
+        "Automated data quality reports"
+      ],
+
+      impact: [
+        "Supports cross-dataset analysis.",
+        "Simplifies analytics without manual SQL.",
+        "Provides scalable decision support."
+      ],
+
+      demo:
+        "https://dataset-insight-platform.streamlit.app/"
+    },
+
+    {
+      name: "Blinkit Sales Performance Analysis",
+
+      technologies: [
+        "Python",
+        "Power BI",
+        "Pandas",
+        "NumPy"
+      ],
+
+      description:
+        "Retail sales analysis on 8,523 grocery products using Python and Power BI.",
+
+      insights: [
+        "Analyzed $1.20M sales.",
+        "Tracked Average Order Value.",
+        "Built KPI dashboard.",
+        "Identified top performing product categories.",
+        "Found Tier 2 and Tier 3 cities generated major sales."
       ]
     },
+
     {
-      "company": "Data Solutions Inc",
-      "role": "Data Analyst",
-      "period": "Jun 2022 - Dec 2023",
-      "description": "Delivered data analytics solutions for Fortune 500 clients across retail, finance, and healthcare.",
-      "achievements": [
-        "Developed Power BI solutions for 15+ enterprise clients",
-        "Created predictive models improving forecast accuracy by 25%",
-        "Reduced data processing time by 60% through optimization"
+      name: "Trader Performance vs Market Sentiment",
+
+      technologies: [
+        "Python",
+        "Pandas",
+        "EDA",
+        "Behavioral Analytics"
+      ],
+
+      description:
+        "Behavioral analysis comparing trader performance with Bitcoin market sentiment.",
+
+      insights: [
+        "Calculated PnL.",
+        "Calculated Win Rate.",
+        "Behavioral Segmentation.",
+        "Fear-based market produced strongest trader performance."
       ]
     },
+
     {
-      "company": "Analytics Startup",
-      "role": "Junior Data Analyst",
-      "period": "Apr 2020 - May 2022",
-      "description": "Started career in data analytics, working on diverse projects from data cleaning to visualization.",
-      "achievements": [
-        "Processed and cleaned datasets with 10M+ records",
-        "Built first dashboards for sales and marketing teams",
-        "Automated weekly reports using Python scripts"
+      name: "Road Accident Casualty Analysis",
+
+      technologies: [
+        "MS Excel",
+        "Dashboard",
+        "Pivot Tables"
+      ],
+
+      description:
+        "Interactive dashboard analysing 235,288 accident casualties.",
+
+      insights: [
+        "Fatal, Serious and Slight casualty analysis.",
+        "Road type analysis.",
+        "Vehicle analysis.",
+        "Urban vs Rural comparison."
       ]
     }
   ],
-  "projects": [
+
+  certifications: [
     {
-      "name": "Sales Performance Dashboard",
-      "description": "Interactive Tableau dashboard for real-time sales analytics across regions and products.",
-      "technologies": ["Tableau", "SQL", "ETL"],
-      "impact": "Processes 2M+ records daily, reduced monthly reporting time by 70%"
+      title: "Data Science and Machine Learning Internship Program",
+      provider: "YBI Foundation"
     },
+
     {
-      "name": "Customer Segmentation Analysis",
-      "description": "ML-based customer segmentation using RFM analysis and K-means clustering.",
-      "technologies": ["Python", "Scikit-learn", "Pandas"],
-      "impact": "Identified 5 key customer personas, 35% higher marketing conversion rates"
+      title: "Python Programming",
+      provider: "Kaggle"
     },
+
     {
-      "name": "Financial Analytics Platform",
-      "description": "Power BI solution for financial reporting, budget tracking, and forecasting.",
-      "technologies": ["Power BI", "DAX", "SQL Server"],
-      "impact": "$50M tracked, 95% forecast accuracy, 200+ reports generated"
+      title: "Pandas for Data Analysis",
+      provider: "Kaggle"
     },
+
     {
-      "name": "Supply Chain Optimization",
-      "description": "Data analysis project identifying bottlenecks and optimizing inventory levels.",
-      "technologies": ["Python", "SQL", "Simulation"],
-      "impact": "Reduced stockouts by 40%, excess inventory by 25%, $2M savings"
-    },
-    {
-      "name": "Marketing Attribution Model",
-      "description": "Multi-touch attribution model analyzing customer journey across channels.",
-      "technologies": ["BigQuery", "Python", "Marketing Analytics"],
-      "impact": "Analyzed 50M touchpoints, 22% improvement in marketing ROI"
-    },
-    {
-      "name": "ETL Pipeline Automation",
-      "description": "Automated data pipeline using Apache Airflow for daily ETL processes.",
-      "technologies": ["Python", "Airflow", "Docker", "AWS"],
-      "impact": "Processes 500GB daily across 15 sources, 90% automation"
+      title: "3D & 2D Data Visualization with Python",
+      provider: "YBI Foundation"
     }
   ],
-  "certifications": [
-    {"name": "Google Data Analytics Professional Certificate", "issuer": "Google", "year": "2024"},
-    {"name": "Tableau Desktop Specialist", "issuer": "Tableau", "year": "2024"},
-    {"name": "Microsoft Power BI Data Analyst", "issuer": "Microsoft", "year": "2023"},
-    {"name": "AWS Data Analytics Specialty", "issuer": "Amazon Web Services", "year": "2023"},
-    {"name": "Deep Learning Specialization", "issuer": "Coursera - DeepLearning.AI", "year": "2023"},
-    {"name": "MongoDB Data Modeling", "issuer": "MongoDB University", "year": "2023"},
-    {"name": "Statistics Fundamentals", "issuer": "DataCamp", "year": "2023"},
-    {"name": "SQL Mastery Certification", "issuer": "HackerRank", "year": "2022"}
-  ],
-  "career_goals": {
-    "short_term": "Continue growing as a data analyst, expand expertise in machine learning and AI, and take on leadership roles in data strategy.",
-    "long_term": "Transition into a Data Science Lead or Analytics Manager role, building teams that deliver impactful data solutions.",
-    "interests": ["Machine Learning", "AI Applications", "Cloud Analytics", "Data Engineering", "Business Strategy"]
+
+  careerGoals: {
+    shortTerm:
+      "Secure Data Analytics internships and freelance opportunities while building production-ready analytics applications.",
+
+    longTerm:
+      "Become an AI/ML Engineer and build intelligent analytics products used by businesses worldwide.",
+
+    currentLearning: [
+      "Machine Learning",
+      "AI",
+      "Advanced SQL",
+      "Power BI",
+      "PostgreSQL",
+      "Next.js",
+      "Generative AI",
+      "LLMs"
+    ]
   },
-  "achievements": [
-    "Employee of the Year at Data Solutions Inc (2023)",
-    "Top Performer at Tech Corp (2024)",
-    "Published research on statistical modeling",
-    "Won inter-college data science competition"
+
+  services: [
+    "Data Cleaning",
+    "Dashboard Development",
+    "Power BI Dashboards",
+    "SQL Analysis",
+    "Python Automation",
+    "Exploratory Data Analysis",
+    "Business Analytics",
+    "Interactive Analytics Applications"
   ],
-  "contact": {
-    "email": "rudrapratap@example.com",
-    "location": "New Delhi, India",
-    "availability": "Open to remote opportunities and freelance projects"
+
+  faq: [
+    {
+      question: "Is Rudrapratap available for internships?",
+      answer:
+        "Yes. He is actively looking for internships in Data Analytics, Business Intelligence and AI."
+    },
+
+    {
+      question: "Can he work remotely?",
+      answer:
+        "Yes. He is open to remote internships and freelance opportunities."
+    },
+
+    {
+      question: "Does he build AI applications?",
+      answer:
+        "Yes. Along with analytics, he is currently building AI-powered analytics platforms and learning modern LLM technologies."
+    },
+
+    {
+      question: "What type of projects has he completed?",
+      answer:
+        "Retail analytics, market sentiment analysis, road accident analytics, full-stack analytics platforms and data operations projects."
+    }
+  ],
+
+  contact: {
+    email: "rudrapratapsarma549@gmail.com",
+    github: "https://github.com/rudrapratap601",
+    linkedin: "https://linkedin.com/in/rudrapratap-sarma",
+    portfolio: "Portfolio Website"
   }
 };
 

@@ -1,159 +1,83 @@
 "use client";
-
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, BarChart2, MessageCircle } from "lucide-react";
-
-const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Projects", href: "/projects" },
-  { name: "Experience", href: "/experience" },
-  { name: "Certificates", href: "/certificates" },
-  { name: "Contact", href: "/contact" },
-  { name: "AI Assistant", href: "/assistant", icon: MessageCircle },
+import { useState } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+const items = [
+  ["Home", "/"],
+  ["About", "/about"],
+  ["Projects", "/projects"],
+  ["Experience", "/experience"],
+  ["Certificates", "/certificates"],
+  ["Contact", "/contact"],
+  ["Assistant", "/assistant"],
 ];
-
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
-
+  const path = usePathname();
+  const [open, setOpen] = useState(false);
   return (
-    <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "glass-heavy py-3" : "py-5"
-        }`}
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0b1014]/95 backdrop-blur-xl">
+      <nav
+        aria-label="Main navigation"
+        className="mx-auto flex max-w-[1180px] items-center justify-between px-6 py-5"
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2"
+        <Link href="/" className="font-mono text-lg font-semibold">
+          rs<span className="text-teal-200">.</span>
+          <span className="ml-3 text-xs font-normal text-slate-400">
+            DATA & INSIGHTS
+          </span>
+        </Link>
+        <div className="hidden items-center gap-6 lg:flex">
+          {items.map(([label, href]) => (
+            <Link
+              key={href}
+              href={href}
+              aria-current={path === href ? "page" : undefined}
+              className={
+                path === href
+                  ? "text-sm text-teal-200"
+                  : "text-sm text-slate-400 hover:text-white"
+              }
             >
-              <div className="glass-card flex h-10 w-10 items-center justify-center rounded-xl">
-                <BarChart2 className="h-5 w-5" />
-              </div>
-              <span className="font-mono text-sm font-medium tracking-wider">
-                RS<span className="text-muted-foreground">.data</span>
-              </span>
-            </motion.div>
-          </Link>
-
-          <ul className="hidden items-center gap-1 lg:flex">
-            {navItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  href={item.href}
-                  className={`nav-link flex items-center gap-1.5 px-4 py-2 ${
-                    pathname === item.href ? "active" : ""
-                  }`}
-                >
-                  {item.icon && <item.icon className="h-4 w-4" />}
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex items-center gap-3">
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="glass-card flex h-10 w-10 items-center justify-center rounded-xl lg:hidden"
-              aria-label="Open menu"
+              {label}
+              {label === "Assistant" && (
+                <ArrowUpRight className="ml-1 inline" size={13} />
+              )}
+            </Link>
+          ))}
+        </div>
+        <button
+          className="rounded p-2 lg:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+      </nav>
+      {open && (
+        <nav
+          id="mobile-menu"
+          aria-label="Mobile navigation"
+          onKeyDown={(e) => {
+            if (e.key === "Escape") setOpen(false);
+          }}
+          className="grid max-h-[80dvh] overflow-auto border-t border-white/10 bg-[#0b1014] px-6 pb-5 lg:hidden"
+        >
+          {items.map(([label, href]) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setOpen(false)}
+              aria-current={path === href ? "page" : undefined}
+              className="py-3 text-sm"
             >
-              <Menu className="h-5 w-5" />
-            </motion.button>
-          </div>
+              {label}
+            </Link>
+          ))}
         </nav>
-      </motion.header>
-
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 z-[70] h-full w-full max-w-sm"
-            >
-              <div className="glass-heavy flex h-full flex-col">
-                <div className="flex items-center justify-between border-b border-white/10 p-5">
-                  <Link href="/" className="flex items-center gap-2">
-                    <div className="glass-card flex h-10 w-10 items-center justify-center rounded-xl">
-                      <BarChart2 className="h-5 w-5" />
-                    </div>
-                    <span className="font-mono text-sm font-medium">
-                      RS<span className="text-muted-foreground">.data</span>
-                    </span>
-                  </Link>
-                  <motion.button
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="glass-card flex h-10 w-10 items-center justify-center rounded-xl"
-                    aria-label="Close menu"
-                  >
-                    <X className="h-5 w-5" />
-                  </motion.button>
-                </div>
-
-                <ul className="flex flex-col gap-2 p-5">
-                  {navItems.map((item, index) => (
-                    <motion.li
-                      key={item.name}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link
-                        href={item.href}
-                        className={`flex items-center gap-3 rounded-xl px-4 py-3 text-lg transition-colors ${
-                          pathname === item.href
-                            ? "bg-white/10 text-foreground"
-                            : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
-                        }`}
-                      >
-                        {item.icon && <item.icon className="h-5 w-5" />}
-                        {item.name}
-                      </Link>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+      )}
+    </header>
   );
 }

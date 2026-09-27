@@ -1,14 +1,22 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Twitter, BarChart2, Heart } from "lucide-react";
+
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  BarChart2,
+  Heart,
+} from "lucide-react";
 
 const socialLinks = [
-  { name: "GitHub", href: "https://github.com", icon: Github },
-  { name: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
-  { name: "Twitter", href: "https://twitter.com", icon: Twitter },
-  { name: "Email", href: "mailto:rudrapratap@example.com", icon: Mail },
+  { name: "GitHub", href: "https://github.com/rudrapratap601", icon: Github },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/rudrapratap-sarma",
+    icon: Linkedin,
+  },
+  { name: "Email", href: "mailto:rudrapratapsarma549@gmail.com", icon: Mail },
 ];
 
 const quickLinks = [
@@ -85,15 +93,9 @@ export function Footer() {
 
           <div className="lg:text-right">
             <h3 className="mb-4 text-sm font-semibold">Download Resume</h3>
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="/resume.pdf"
-              download
-              className="btn-primary inline-flex"
-            >
+            <a href="/resume.pdf" download className="btn-primary inline-flex">
               Download CV
-            </motion.a>
+            </a>
           </div>
         </div>
 
