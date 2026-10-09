@@ -49,6 +49,8 @@ export function portfolioAnswer(question: string): string {
       knowledge.contact.linkedin +
       "."
     );
+  if (/\b(ai|ml|llm|llms)\b|machine learning|artificial intelligence|generative/.test(q))
+    return knowledge.personal.summary + "\n\n" + knowledge.personal.availability;
   if (/project|portfolio|work sample/.test(q))
     return knowledge.projects
       .map((p) => p.name + ": " + p.description)

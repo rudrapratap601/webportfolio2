@@ -5,16 +5,18 @@ export const metadata: Metadata = {
   ...(process.env.SITE_URL
     ? { metadataBase: new URL(process.env.SITE_URL) }
     : {}),
-  title: "Rudrapratap Sarma | Data Analyst Portfolio",
+  title: "Rudrapratap Sarma | Data Analytics & AI/ML Portfolio",
   description:
-    "Portfolio of Rudrapratap Sarma, a Data Analyst specializing in data visualization, business intelligence, and actionable insights.",
+    "Rudrapratap Sarma: Data Analytics and AI/ML enthusiast with Python, SQL, Power BI, and machine learning foundations. Open to internships in both fields.",
   keywords: [
     "Data Analyst",
     "Business Intelligence",
     "Data Visualization",
     "SQL",
     "Python",
-    "Tableau",
+    "Machine Learning",
+    "Artificial Intelligence",
+    "AI/ML Internships",
     "Power BI",
     "Portfolio",
   ],
@@ -23,16 +25,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Rudrapratap Sarma | Data Analyst Portfolio",
+    title: "Rudrapratap Sarma | Data Analytics & AI/ML Portfolio",
     description:
-      "Portfolio showcasing data analytics projects, certifications, and professional experience.",
+      "Data analytics projects, machine learning foundations, and ongoing AI learning. Open to Data Analytics and AI/ML internships.",
     siteName: "Rudrapratap Sarma Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rudrapratap Sarma | Data Analyst Portfolio",
+    title: "Rudrapratap Sarma | Data Analytics & AI/ML Portfolio",
     description:
-      "Portfolio showcasing data analytics projects, certifications, and professional experience.",
+      "Data analytics projects, machine learning foundations, and ongoing AI learning. Open to Data Analytics and AI/ML internships.",
   },
   robots: {
     index: true,

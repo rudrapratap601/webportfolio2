@@ -199,9 +199,9 @@ export default function Assistant() {
             </p>
           </form>
           <p className="mt-4 text-xs leading-relaxed text-slate-500">
-            When AI is enabled, your question and recent messages are sent to
-            Groq to generate a reply. Avoid sharing sensitive information. This
-            page does not save your chat after you leave.
+            Your question and recent messages are sent to Groq to generate a
+            reply. Avoid sharing sensitive information. This page does not save
+            your chat after you leave.
           </p>
         </div>
       </div>

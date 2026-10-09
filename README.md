@@ -60,3 +60,8 @@ The assistant defaults to openai/gpt-oss-20b on Groq. GROQ_MODEL can override th
 
 ## Project previews
 Cards use real screenshots in public/projects. Platform, Blinkit, and road-accident images were copied from the earlier local my-portfolio project. The trader chart comes from rudrapratap601/trader-sentiment-analysis, output/pnl_vs_sentiment.png. Configure categories, source-code links, and images in components/project-cards.tsx. Both homepage and Projects use this shared gallery. Previews open in an accessible dialog with an original-image link; no dashboard screenshot is presented as a live application.
+
+The gallery defaults to Top 4 (the first four entries in data/knowledge.ts), with two columns on desktop and one on mobile. ML Projects, Pure Python Projects, and AI & DL Projects are ready for future entries and show an empty state until populated. Add matching preview metadata in components/project-cards.tsx. Omit image for decorative bars; image load failures also fall back to bars. The trader project intentionally uses this fallback.
+
+## Certificate links
+Edit the url field for each entry in data/knowledge.ts under certifications. Use a public HTTPS certificate URL (issuer verification page, PDF, or publicly shared document). Empty or invalid URLs keep the View certificate button disabled. Valid links open in a new tab. Rebuild/redeploy after updating these source-controlled values; no admin panel or database is required.

@@ -1,19 +1,19 @@
 const knowledge = {
   personal: {
     name: "Rudrapratap Sarma",
-    title: "Data Analytics Trainee",
+    title: "Data Analytics & AI/ML Enthusiast",
     headline:
-      "Python â€¢ SQL â€¢ Power BI â€¢ Streamlit â€¢ MS Excel â€¢ Data Analytics",
+      "Python | SQL | Power BI | Data Analytics | Machine Learning Fundamentals | AI Learning",
 
     summary:
-      "Rudrapratap Sarma is a results-oriented Data Analytics trainee with hands-on experience in data extraction, cleaning, preprocessing, exploratory data analysis, dashboard development, and business intelligence. He builds end-to-end analytics projects using Python, SQL, PostgreSQL, Power BI, Streamlit, Pandas, and Plotly. His goal is to build AI-powered analytics products and become an AI/ML Engineer in the future.",
+      "Rudrapratap Sarma is a BCA student focused on Data Analytics and AI/ML, open to internships in both fields. He brings hands-on experience in Python, SQL, data preprocessing, exploratory data analysis, and dashboard development using Power BI and Streamlit. His project-based training includes machine learning fundamentals, supported by practical work with Pandas and NumPy. He is actively learning AI, generative AI, and LLMs, building on his analytics foundation to develop intelligent, data-driven applications.",
 
     location: "Dharmanagar, Tripura, India",
 
     email: "rudrapratapsarma549@gmail.com",
 
     availability:
-      "Open to internships, freelance projects, remote opportunities and data analytics collaborations."
+      "Open to Data Analytics, Business Intelligence, Machine Learning, and AI internships, including remote opportunities. Also interested in analytics projects and learning-focused AI/ML collaborations."
   },
 
   education: {
@@ -75,6 +75,19 @@ const knowledge = {
       "Plotly",
       "SQLAlchemy",
       "Streamlit"
+    ],
+
+    "machine learning foundations": [
+      "Machine Learning Fundamentals (project-based training)",
+      "Data Preprocessing",
+      "Exploratory Data Analysis",
+      "Python, Pandas & NumPy"
+    ],
+
+    "AI — currently learning": [
+      "Artificial Intelligence",
+      "Generative AI",
+      "Large Language Models (LLMs)"
     ],
 
     databases: [
@@ -218,28 +231,32 @@ const knowledge = {
   certifications: [
     {
       title: "Data Science and Machine Learning Internship Program",
-      provider: "YBI Foundation"
+      provider: "YBI Foundation",
+      url: "https://www.apnaclassroom.com/credential-validation?credentialId=6NDDWYTA27QTB", // Add the public HTTPS certificate link here.
     },
 
     {
       title: "Python Programming",
-      provider: "Kaggle"
+      provider: "Kaggle",
+      url: "https://www.kaggle.com/learn/certification/rudrapratapsarma/python", // Add the public HTTPS certificate link here.
     },
 
     {
       title: "Pandas for Data Analysis",
-      provider: "Kaggle"
+      provider: "Kaggle",
+      url: "https://www.kaggle.com/learn/certification/rudrapratapsarma/pandas", // Add the public HTTPS certificate link here.
     },
 
     {
       title: "3D & 2D Data Visualization with Python",
-      provider: "YBI Foundation"
+      provider: "YBI Foundation",
+      url: "https://www.apnaclassroom.com/credential-validation?credentialId=3QIIDGL01V6UK", // Add the public HTTPS certificate link here.
     }
   ],
 
   careerGoals: {
     shortTerm:
-      "Secure Data Analytics internships and freelance opportunities while building production-ready analytics applications.",
+      "Secure an internship in Data Analytics or AI/ML, contributing Python, SQL, and data preparation skills while strengthening machine learning and AI capabilities.",
 
     longTerm:
       "Become an AI/ML Engineer and build intelligent analytics products used by businesses worldwide.",
@@ -250,7 +267,6 @@ const knowledge = {
       "Advanced SQL",
       "Power BI",
       "PostgreSQL",
-      "Next.js",
       "Generative AI",
       "LLMs"
     ]
@@ -271,7 +287,7 @@ const knowledge = {
     {
       question: "Is Rudrapratap available for internships?",
       answer:
-        "Yes. He is actively looking for internships in Data Analytics, Business Intelligence and AI."
+        "Yes. He is actively looking for internships in Data Analytics, Business Intelligence, Machine Learning, and AI."
     },
 
     {
@@ -283,7 +299,7 @@ const knowledge = {
     {
       question: "Does he build AI applications?",
       answer:
-        "Yes. Along with analytics, he is currently building AI-powered analytics platforms and learning modern LLM technologies."
+        "His portfolio includes a Groq-powered AI assistant. He is learning AI, generative AI, and LLMs, alongside his analytics projects and machine learning fundamentals. He has not listed professional AI/ML engineering experience."
     },
 
     {

@@ -10,7 +10,7 @@ export default function Home() {
         <section className="hero-grid">
           <div>
             <p className="eyebrow">
-              <span className="status-dot" /> OPEN TO DATA ANALYTICS INTERNSHIPS
+              <span className="status-dot" /> OPEN TO DATA ANALYTICS & AI/ML INTERNSHIPS
             </p>
             <h1>
               Turning data
@@ -18,7 +18,7 @@ export default function Home() {
               into <em>direction.</em>
             </h1>
             <p className="hero-name">
-              Rudrapratap Sarma <span>/ Data Analytics</span>
+              Rudrapratap Sarma <span>/ Data Analytics & AI/ML</span>
             </p>
             <p className="hero-description">
               I connect messy datasets, find the patterns that matter, and build
@@ -34,14 +34,14 @@ export default function Home() {
             </div>
             <div className="hero-tools">
               PYTHON <span>/</span> SQL <span>/</span> POWER BI <span>/</span>{" "}
-              STREAMLIT
+              ML FUNDAMENTALS
             </div>
           </div>
           <figure className="portrait-panel">
             <div className="portrait-orbit" aria-hidden="true" />
             <div className="portrait-image"><Image src="/profile-pic%20(1).png" alt="Rudrapratap Sarma" width={2048} height={2048} sizes="(max-width: 800px) 85vw, 430px" priority /></div>
             <span className="portrait-badge"><span className="status-dot" /> Let’s build something useful.</span>
-            <figcaption><div><span className="eyebrow">THE PERSON BEHIND THE DATA</span><strong>Rudrapratap Sarma</strong><span>Data Analytics · Python · Business Intelligence</span></div><span className="portrait-mark" aria-hidden="true">rs.</span></figcaption>
+            <figcaption><div><span className="eyebrow">THE PERSON BEHIND THE DATA</span><strong>Rudrapratap Sarma</strong><span>Data Analytics · Machine Learning · AI</span></div><span className="portrait-mark" aria-hidden="true">rs.</span></figcaption>
           </figure>
         </section>
         <div className="proof-strip">
@@ -65,10 +65,10 @@ export default function Home() {
               <h2>Built around real questions.</h2>
             </div>
             <Link href="/projects" className="text-link">
-              All projects <ArrowUpRight size={17} />
+              View all projects <ArrowUpRight size={17} />
             </Link>
           </div>
-          <ProjectCards />
+          <ProjectCards featuredOnly />
         </section>
         <section className="assistant-banner">
           <Sparkles size={32} />

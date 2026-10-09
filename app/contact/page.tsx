@@ -8,7 +8,7 @@ export default function Contact() {
     <Page
       eyebrow="LET’S CONNECT"
       title="Have a question or opportunity?"
-      intro="I’m looking for data analytics internships and opportunities to put Python, SQL, and business intelligence to work."
+      intro="I’m open to internships in Data Analytics and AI/ML. I bring practical Python, SQL, and analytics skills, a foundation in machine learning, and a growing interest in building AI applications."
     >
       <div className="contact-layout"><div className="contact-details">
         <article className="content-card">

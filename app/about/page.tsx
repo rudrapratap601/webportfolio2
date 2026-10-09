@@ -4,7 +4,7 @@ export const metadata = { title: "About | Rudrapratap Sarma" };
 export default function About() {
   return (
     <Page
-      eyebrow="BEHIND THE ANALYSIS"
+      eyebrow="ANALYTICS & AI/ML"
       title="Curiosity, with a practical purpose."
       intro={knowledge.personal.summary}
     >
@@ -28,8 +28,20 @@ export default function About() {
           </p>
           <p>
             Based in {knowledge.personal.location}. Seeking an internship where
-            I can contribute to business insights and continue learning.
+            I can contribute to analytics or AI/ML work and continue learning.
           </p>
+        </article>
+      </div>
+      <div className="content-grid mt-6">
+        <article className="content-card">
+          <p className="eyebrow">DATA ANALYTICS</p>
+          <h2>From raw data to clear decisions.</h2>
+          <p>Hands-on work with Python, SQL, Excel, Power BI, and Streamlit: cleaning datasets, exploring patterns, building dashboards, and communicating business insights.</p>
+        </article>
+        <article className="content-card">
+          <p className="eyebrow">MACHINE LEARNING & AI</p>
+          <h2>A strong data foundation. A growing AI toolkit.</h2>
+          <p>Trained in machine learning fundamentals with Python, Pandas, and NumPy. Currently learning AI, generative AI, and LLMs, with practical exposure through this portfolio’s AI assistant. Open to internships that combine contribution, mentorship, and hands-on learning.</p>
         </article>
       </div>
       <div className="section-heading">

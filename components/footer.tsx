@@ -48,9 +48,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Data Analyst specializing in transforming complex datasets into
-              actionable insights. Building data-driven solutions that drive
-              business growth.
+              Data Analytics & AI/ML enthusiast working with Python, SQL, and
+              business intelligence. Open to internships in analytics, machine
+              learning, and AI.
             </p>
           </div>
 

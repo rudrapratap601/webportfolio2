@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { ArrowUpRight, Github, Expand } from "lucide-react";
+import Image, { type StaticImageData } from "next/image";
+import { ArrowUpRight, Github, Expand, Activity } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -12,10 +12,12 @@ import {
 import knowledge from "@/data/knowledge";
 import platform from "@/public/projects/analytics-platform.png";
 import blinkit from "@/public/projects/blinkit-dashboard.png";
-import trader from "@/public/projects/trader-sentiment.png";
+
 import road from "@/public/projects/road-accident-dashboard.png";
 
-const previews = [
+type Preview = { image?: StaticImageData; category: string; label: string; code?: string };
+// Omit image to use the decorative fallback.
+const previews: Preview[] = [
   {
     image: platform,
     category: "Data Analytics",
@@ -29,7 +31,6 @@ const previews = [
     code: "https://github.com/rudrapratap601/blinkit-sales-performance-analysis",
   },
   {
-    image: trader,
     category: "Data Analysis",
     label: "Analysis output · PnL by sentiment",
     code: "https://github.com/rudrapratap601/trader-sentiment-analysis",
@@ -41,20 +42,22 @@ const previews = [
     code: "https://github.com/rudrapratap601/excel-analysis-projects/tree/main/Road_Accident_Analysis",
   },
 ];
-const categories = ["All", "Data Analytics", "Data Analysis", "Excel Analysis"];
+const categories = ["Top 4", "Data Analytics", "Data Analysis", "Excel Analysis", "ML Projects", "Pure Python Projects", "AI & DL Projects"];
 
-export function ProjectCards() {
-  const [category, setCategory] = useState("All");
+export function ProjectCards({ featuredOnly = false }: { featuredOnly?: boolean }) {
+  const [category, setCategory] = useState("Top 4");
   const [selected, setSelected] = useState<number | null>(null);
+  const [failedImages, setFailedImages] = useState<number[]>([]);
+  const selectedImage = selected !== null ? previews[selected]?.image : undefined;
   const visible = knowledge.projects
     .map((project, index) => ({ project, index }))
     .filter(
       ({ index }) =>
-        category === "All" || previews[index].category === category,
+        featuredOnly || category === "Top 4" ? index < 4 : previews[index]?.category === category,
     );
   return (
     <>
-      <div
+      {!featuredOnly && <div
         className="project-filters"
         role="group"
         aria-label="Filter projects by category"
@@ -69,13 +72,14 @@ export function ProjectCards() {
             {item}
           </button>
         ))}
-      </div>
+      </div>}
       <p className="sr-only" role="status">
         Showing {visible.length} projects
       </p>
       <div className="project-grid screenshot-grid">
         {visible.map(({ project, index }) => {
-          const preview = previews[index];
+          const preview = previews[index] ?? { category: "Data Analysis", label: "" };
+          const image = failedImages.includes(index) ? undefined : preview.image;
           const details =
             "features" in project ? project.features : project.insights;
           return (
@@ -84,23 +88,24 @@ export function ProjectCards() {
               key={project.name}
               id={`project-${index + 1}`}
             >
-              <button
+              {image ? <button
                 type="button"
                 className="project-preview"
                 onClick={() => setSelected(index)}
                 aria-label={`Enlarge ${project.name} preview`}
               >
                 <Image
-                  src={preview.image}
+                  src={image}
                   alt={`${project.name}: ${preview.label}`}
                   fill
-                  sizes="(max-width: 640px) 90vw, (max-width: 1099px) 45vw, 360px"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1180px) 45vw, 550px"
+                  onError={() => setFailedImages(previous => [...previous, index])}
                   placeholder="blur"
                 />
                 <span className="preview-expand">
                   <Expand size={16} /> View preview
                 </span>
-              </button>
+              </button> : <div className={`project-art project-fallback art-${index % 4}`} aria-hidden="true"><Activity size={48} strokeWidth={1} /><span>0{index + 1} / ANALYTICS</span><div className="chart-bars">{[35,60,45,80,65,95,75].map((height, i) => <i key={i} style={{height: `${height}%`}} />)}</div></div>}
               <div className="work-body">
                 <span className="project-category">{preview.category}</span>
                 <h2>{project.name}</h2>
@@ -119,7 +124,7 @@ export function ProjectCards() {
                   </ul>
                 </details>
                 <div className="project-actions">
-                  <a
+                  {preview.code && <a
                     href={preview.code}
                     className="btn-secondary"
                     target="_blank"
@@ -127,7 +132,7 @@ export function ProjectCards() {
                   >
                     <Github size={15} /> Code
                     <span className="sr-only"> for {project.name}</span>
-                  </a>
+                  </a>}
                   {project.demo ? (
                     <a
                       href={project.demo}
@@ -137,7 +142,7 @@ export function ProjectCards() {
                     >
                       <ArrowUpRight size={16} /> View web
                     </a>
-                  ) : (
+                  ) : image ? (
                     <button
                       type="button"
                       className="btn-primary"
@@ -146,20 +151,21 @@ export function ProjectCards() {
                       <Expand size={15} /> View{" "}
                       {index === 2 ? "chart" : "dashboard"}
                     </button>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </article>
           );
         })}
       </div>
+      {visible.length === 0 && <div className="project-empty"><h2>{category}</h2><p>New projects will appear here as they’re added.</p><button className="btn-secondary" onClick={() => setCategory("Top 4")}>Explore Top 4</button></div>}
       <Dialog
         open={selected !== null}
         onOpenChange={(open) => {
           if (!open) setSelected(null);
         }}
       >
-        {selected !== null && (
+        {selected !== null && selectedImage && (
           <DialogContent className="project-lightbox">
             <DialogTitle>{knowledge.projects[selected].name}</DialogTitle>
             <DialogDescription>
@@ -168,13 +174,13 @@ export function ProjectCards() {
             </DialogDescription>
             <div className="project-lightbox-image">
               <Image
-                src={previews[selected].image}
+                src={selectedImage}
                 alt={`${knowledge.projects[selected].name} full preview`}
                 sizes="95vw"
               />
             </div>
             <a
-              href={previews[selected].image.src}
+              href={selectedImage.src}
               target="_blank"
               rel="noopener noreferrer"
               className="text-link"
