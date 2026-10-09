@@ -49,9 +49,14 @@ Tests cover malformed requests, oversized bodies, injected roles, fallback answe
 - Homepage highlights and project presentation: `app/page.tsx`, `components/portfolio.tsx`.
 - Resume: `public/resume.pdf`.
 - Email and social links: shared knowledge and footer.
-- Contact uses a real mailto link, not a form claiming to send messages.
+- Contact includes a Web3Forms message form and a mailto fallback. Configure NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in .env.local and the deployment environment, then rebuild. This form routing key is designed to be public; GROQ_API_KEY must remain server-only. The form preserves text on failure and reports success only when Web3Forms confirms it.
 - Only the resume-supplied project demo is linked; repository and credential URLs are not invented.
 - Set SITE_URL to generate production sitemap URLs. Without it the sitemap is intentionally empty.
 - Project illustrations are decorative, not screenshots of the actual applications.
 
 Before publishing, replace the key, set your domain, confirm the resume is the version you want public, and test a real AI conversation on the deployed host.
+
+The assistant defaults to openai/gpt-oss-20b on Groq. GROQ_MODEL can override this. The homepage portrait uses public/profile-pic (1).png.
+
+## Project previews
+Cards use real screenshots in public/projects. Platform, Blinkit, and road-accident images were copied from the earlier local my-portfolio project. The trader chart comes from rudrapratap601/trader-sentiment-analysis, output/pnl_vs_sentiment.png. Configure categories, source-code links, and images in components/project-cards.tsx. Both homepage and Projects use this shared gallery. Previews open in an accessible dialog with an original-image link; no dashboard screenshot is presented as a live application.

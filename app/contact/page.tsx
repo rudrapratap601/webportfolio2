@@ -1,3 +1,4 @@
+import { ContactForm } from "@/components/contact-form";
 import { Page } from "@/components/portfolio";
 import knowledge from "@/data/knowledge";
 import { ArrowUpRight, Mail, Github, Linkedin } from "lucide-react";
@@ -9,7 +10,7 @@ export default function Contact() {
       title="Have a question or opportunity?"
       intro="I’m looking for data analytics internships and opportunities to put Python, SQL, and business intelligence to work."
     >
-      <div className="content-grid">
+      <div className="contact-layout"><div className="contact-details">
         <article className="content-card">
           <Mail size={32} className="text-teal-300 mb-6" />
           <h2>Start a conversation.</h2>
@@ -48,7 +49,7 @@ export default function Contact() {
             Download my resume <ArrowUpRight size={16} />
           </a>
         </article>
-      </div>
+      </div><ContactForm /></div>
     </Page>
   );
 }

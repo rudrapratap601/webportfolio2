@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Download, Sparkles } from "lucide-react";
 import { Layout } from "@/components/layout";
@@ -36,30 +37,12 @@ export default function Home() {
               STREAMLIT
             </div>
           </div>
-          <div className="hero-panel">
-            <div className="panel-top">
-              <span>FROM RAW DATA TO INSIGHT</span>
-              <span className="status-dot" />
-            </div>
-            <div className="insight-number">
-              500<span>+</span>
-            </div>
-            <p>job opportunities structured</p>
-            <div className="signal-chart" aria-hidden="true">
-              {[24, 38, 32, 52, 45, 64, 58, 78, 71, 92, 84, 100].map(
-                (height, i) => (
-                  <div key={i} style={{ height: `${height}%` }} />
-                ),
-              )}
-            </div>
-            <div className="panel-bottom">
-              <span>35+ source documents</span>
-              <span>Jobyaari internship ↗</span>
-            </div>
-            <div className="panel-note">
-              Extract. Clean. Analyze. Communicate.
-            </div>
-          </div>
+          <figure className="portrait-panel">
+            <div className="portrait-orbit" aria-hidden="true" />
+            <div className="portrait-image"><Image src="/profile-pic%20(1).png" alt="Rudrapratap Sarma" width={2048} height={2048} sizes="(max-width: 800px) 85vw, 430px" priority /></div>
+            <span className="portrait-badge"><span className="status-dot" /> Let’s build something useful.</span>
+            <figcaption><div><span className="eyebrow">THE PERSON BEHIND THE DATA</span><strong>Rudrapratap Sarma</strong><span>Data Analytics · Python · Business Intelligence</span></div><span className="portrait-mark" aria-hidden="true">rs.</span></figcaption>
+          </figure>
         </section>
         <div className="proof-strip">
           <div>
