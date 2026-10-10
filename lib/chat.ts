@@ -18,6 +18,8 @@ export const chatSchema = z
   .strict();
 export function portfolioAnswer(question: string): string {
   const q = question.toLowerCase();
+  if (/top\s*(4|four)|featured\s+projects?/i.test(q))
+    return "Rudrapratap’s top 4 projects are:\n" + knowledge.featuredProjects.map((name, index) => `${index + 1}. ${name}`).join("\n");
   const project = knowledge.projects.find(
     (p) =>
       q.includes(p.name.toLowerCase()) ||

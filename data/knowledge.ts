@@ -27,6 +27,9 @@ const knowledge = {
   experience: [
     {
       company: "Jobyaari",
+      id: "jobyaari-intern-2026",
+      type: "Internship",
+      location: "Remote",
       role: "Data Operations & Analytics Intern",
       duration: "May 2026 - June 2026",
 
@@ -49,6 +52,9 @@ const knowledge = {
 
     {
       company: "YBI Foundation",
+      id: "ybi-training-2025",
+      type: "Project-based training",
+      location: "Remote",
       role: "Data Analytics Trainee",
       duration: "Sep 2025 - Dec 2025",
 
@@ -70,6 +76,7 @@ const knowledge = {
     libraries: [
       "Pandas",
       "NumPy",
+      "Scikit Learn",
       "Matplotlib",
       "Seaborn",
       "Plotly",
@@ -78,23 +85,24 @@ const knowledge = {
     ],
 
     "machine learning foundations": [
-      "Machine Learning Fundamentals (project-based training)",
+      "Machine Learning Fundamentals",
       "Linear Regression from Scratch",
       "Batch, Stochastic & Mini-batch Gradient Descent",
       "Data Preprocessing",
       "Exploratory Data Analysis",
-      "Python, Pandas & NumPy"
+      "Python, Pandas, NumPy, sklearn"
     ],
 
     "AI — currently learning": [
       "Artificial Intelligence",
-      "Generative AI",
+      "Machine Learning",
       "Large Language Models (LLMs)"
     ],
 
     databases: [
       "PostgreSQL",
-      "MySQL"
+      "MySQL",
+      "SQL Server"
     ],
 
     visualization: [
@@ -127,6 +135,13 @@ const knowledge = {
       "Jupyter Notebook"
     ]
   },
+
+  featuredProjects: [
+    "Data Analytics Platform",
+    "Blinkit Sales Performance Analysis",
+    "Trader Performance vs Market Sentiment",
+    "Machine Learning from Scratch"
+  ],
 
   projects: [
     {
@@ -210,6 +225,22 @@ const knowledge = {
     },
 
     {
+      name: "Machine Learning from Scratch",
+      status: "Ongoing · Linear regression implemented",
+      technologies: ["Python", "NumPy", "Pandas", "Matplotlib", "Jupyter"],
+      description:
+        "Building machine learning algorithms with Python and NumPy to understand the mathematics behind training and prediction. Current work explores linear regression with closed-form solutions and three gradient descent methods.",
+      features: [
+        "Simple and multiple linear regression implemented from scratch.",
+        "Closed-form solutions and batch, stochastic, and mini-batch gradient descent.",
+        "Manual regression metrics, including MAE, MSE, RMSE, and R².",
+        "Mathematical explanations and Jupyter notebooks accompany the implementations.",
+        "Ongoing learning project; classification, clustering, and other algorithms are planned."
+      ],
+      repository: "https://github.com/rudrapratap601/ML-From-Scratch"
+    },
+
+    {
       name: "Road Accident Casualty Analysis",
 
       technologies: [
@@ -227,21 +258,6 @@ const knowledge = {
         "Vehicle analysis.",
         "Urban vs Rural comparison."
       ]
-    },
-    {
-      name: "Machine Learning from Scratch",
-      status: "Ongoing · Linear regression implemented",
-      technologies: ["Python", "NumPy", "Pandas", "Matplotlib", "Jupyter"],
-      description:
-        "Building machine learning algorithms with Python and NumPy to understand the mathematics behind training and prediction. Current work explores linear regression with closed-form solutions and three gradient descent methods.",
-      features: [
-        "Simple and multiple linear regression implemented from scratch.",
-        "Closed-form solutions and batch, stochastic, and mini-batch gradient descent.",
-        "Manual regression metrics, including MAE, MSE, RMSE, and R².",
-        "Mathematical explanations and Jupyter notebooks accompany the implementations.",
-        "Ongoing learning project; classification, clustering, and other algorithms are planned."
-      ],
-      repository: "https://github.com/rudrapratap601/ML-From-Scratch"
     },
     {
       name: "E-Commerce Order Insights v2 (Python Project)",

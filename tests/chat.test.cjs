@@ -30,6 +30,27 @@ function load(file) {
 }
 const { NextRequest } = require("next/server");
 const { chatSchema, portfolioAnswer } = load("lib/chat.ts");
+test("featured answers remain correct when project data is reordered", () => {
+  const knowledge = load("data/knowledge.ts").default;
+  assert.equal(new Set(knowledge.featuredProjects).size, 4);
+  for (const question of ["What are your top 4 projects?", "Show featured projects"]) {
+    const answer = portfolioAnswer(question);
+    for (const name of knowledge.featuredProjects) assert.ok(answer.includes(name));
+    assert.ok(!answer.includes("Road Accident"));
+  }
+  const source = fs.readFileSync("components/project-cards.tsx", "utf8");
+  const declaration = source.slice(source.indexOf("const previews:"), source.indexOf("const categories"));
+  const js = ts.transpileModule(declaration + "\nmodule.exports = previews;", {
+    compilerOptions: { module: ts.ModuleKind.CommonJS }
+  }).outputText;
+  const context = { module: { exports: {} }, platform: "platform", blinkit: "blinkit", road: "road" };
+  require("node:vm").runInNewContext(js, context);
+  const previews = context.module.exports;
+  for (const project of [...knowledge.projects].reverse()) assert.ok(previews[project.name]);
+  assert.equal(previews["Machine Learning from Scratch"].category, "ML Projects");
+  assert.equal(previews["Machine Learning from Scratch"].image, undefined);
+  assert.equal(previews["Road Accident Casualty Analysis"].image, "road");
+});
 const originalFetch = global.fetch;
 afterEach(() => {
   global.fetch = originalFetch;

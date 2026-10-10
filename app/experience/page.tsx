@@ -1,5 +1,6 @@
 import { Page, ContactCTA } from "@/components/portfolio";
 import knowledge from "@/data/knowledge";
+import { BriefcaseBusiness, GraduationCap, CalendarDays, MapPin } from "lucide-react";
 export const metadata = { title: "Experience | Rudrapratap Sarma" };
 export default function Experience() {
   return (
@@ -8,19 +9,25 @@ export default function Experience() {
       title="Learning by doing the work."
       intro="Practical experience in data operations, supported by project-based analytics training."
     >
-      <div className="timeline">
-        {knowledge.experience.map((job, i) => (
-          <article className="content-card timeline-item" key={job.company}>
-            <div>
+      <ol className="timeline" aria-label="Experience and training, most recent first">
+        {knowledge.experience.map((job) => (
+          <li className="timeline-step" key={job.id}>
+            <span className="timeline-marker" aria-hidden="true">
+              {job.type === "Project-based training" ? <GraduationCap size={18} /> : <BriefcaseBusiness size={18} />}
+            </span>
+          <article className="content-card timeline-item">
+            <header>
               <p className="eyebrow">
-                {i === 0 ? "INTERNSHIP" : "PROJECT-BASED TRAINING"}
+                {job.type}
               </p>
-              <p>{job.duration}</p>
-              <p>Remote</p>
-            </div>
-            <div>
               <h2>{job.role}</h2>
               <h3>{job.company}</h3>
+              <div className="timeline-meta">
+                <span><CalendarDays size={14} aria-hidden="true" />{job.duration}</span>
+                {job.location && <span><MapPin size={14} aria-hidden="true" />{job.location}</span>}
+              </div>
+            </header>
+            <div>
               <ul>
                 {job.responsibilities.map((item) => (
                   <li key={item}>{item}</li>
@@ -28,8 +35,9 @@ export default function Experience() {
               </ul>
             </div>
           </article>
+          </li>
         ))}
-      </div>
+      </ol>
       <ContactCTA />
     </Page>
   );
