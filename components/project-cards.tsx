@@ -15,7 +15,7 @@ import blinkit from "@/public/projects/blinkit-dashboard.png";
 
 import road from "@/public/projects/road-accident-dashboard.png";
 
-type Preview = { image?: StaticImageData; category: string; label: string; code?: string };
+type Preview = { image?: StaticImageData; category: string; label: string; code?: string; implementation?: string };
 // Omit image to use the decorative fallback.
 const previews: Preview[] = [
   {
@@ -41,7 +41,24 @@ const previews: Preview[] = [
     label: "Excel dashboard",
     code: "https://github.com/rudrapratap601/excel-analysis-projects/tree/main/Road_Accident_Analysis",
   },
+  {
+    category: "ML Projects",
+    label: "Machine learning foundations",
+    code: "https://github.com/rudrapratap601/ML-From-Scratch",
+    implementation: "https://github.com/rudrapratap601/ML-From-Scratch/tree/main/linear_regression",
+  },
+  {
+    category: "Pure Python Projects",
+    label: "E-commerce order analysis",
+    code: "https://github.com/rudrapratap601/Pure-Python-Projects/tree/main/Python_Project/ecommerce_order_insights/v2_advanced_ds",
+  },
+  {
+    category: "Pure Python Projects",
+    label: "Student data management",
+    code: "https://github.com/rudrapratap601/Pure-Python-Projects/tree/main/Python_Project/OOPS_project",
+  },
 ];
+const featuredIndices = [0, 1, 2, 4];
 const categories = ["Top 4", "Data Analytics", "Data Analysis", "Excel Analysis", "ML Projects", "Pure Python Projects", "AI & DL Projects"];
 
 export function ProjectCards({ featuredOnly = false }: { featuredOnly?: boolean }) {
@@ -53,7 +70,7 @@ export function ProjectCards({ featuredOnly = false }: { featuredOnly?: boolean 
     .map((project, index) => ({ project, index }))
     .filter(
       ({ index }) =>
-        featuredOnly || category === "Top 4" ? index < 4 : previews[index]?.category === category,
+        featuredOnly || category === "Top 4" ? featuredIndices.includes(index) : previews[index]?.category === category,
     );
   return (
     <>
@@ -105,10 +122,11 @@ export function ProjectCards({ featuredOnly = false }: { featuredOnly?: boolean 
                 <span className="preview-expand">
                   <Expand size={16} /> View preview
                 </span>
-              </button> : <div className={`project-art project-fallback art-${index % 4}`} aria-hidden="true"><Activity size={48} strokeWidth={1} /><span>0{index + 1} / ANALYTICS</span><div className="chart-bars">{[35,60,45,80,65,95,75].map((height, i) => <i key={i} style={{height: `${height}%`}} />)}</div></div>}
+              </button> : <div className={`project-art project-fallback art-${index % 4}`} aria-hidden="true"><Activity size={48} strokeWidth={1} /><span>0{index + 1} / {preview.category.toUpperCase()}</span><div className="chart-bars">{[35,60,45,80,65,95,75].map((height, i) => <i key={i} style={{height: `${height}%`}} />)}</div></div>}
               <div className="work-body">
                 <span className="project-category">{preview.category}</span>
                 <h2>{project.name}</h2>
+                {"status" in project && project.status && <p className="project-status">{project.status}</p>}
                 <p>{project.description}</p>
                 <div className="tag-list">
                   {project.technologies.map((tag) => (
@@ -133,7 +151,11 @@ export function ProjectCards({ featuredOnly = false }: { featuredOnly?: boolean 
                     <Github size={15} /> Code
                     <span className="sr-only"> for {project.name}</span>
                   </a>}
-                  {project.demo ? (
+                  {preview.implementation ? (
+                    <a href={preview.implementation} className="btn-primary" target="_blank" rel="noopener noreferrer">
+                      <ArrowUpRight size={16} /> Explore implementations
+                    </a>
+                  ) : project.demo ? (
                     <a
                       href={project.demo}
                       className="btn-primary"

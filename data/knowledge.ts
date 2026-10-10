@@ -6,7 +6,7 @@ const knowledge = {
       "Python | SQL | Power BI | Data Analytics | Machine Learning Fundamentals | AI Learning",
 
     summary:
-      "Rudrapratap Sarma is a BCA student focused on Data Analytics and AI/ML, open to internships in both fields. He brings hands-on experience in Python, SQL, data preprocessing, exploratory data analysis, and dashboard development using Power BI and Streamlit. His project-based training includes machine learning fundamentals, supported by practical work with Pandas and NumPy. He is actively learning AI, generative AI, and LLMs, building on his analytics foundation to develop intelligent, data-driven applications.",
+      "Rudrapratap Sarma is a BCA student focused on Data Analytics and AI/ML, open to internships in both fields. He brings hands-on experience in Python, SQL, data preprocessing, exploratory data analysis, and dashboard development using Power BI and Streamlit. His ML-From-Scratch project implements linear regression with closed-form solutions and batch, stochastic, and mini-batch gradient descent using Python and NumPy. He is actively learning AI, generative AI, and LLMs, building on his analytics foundation to develop intelligent, data-driven applications.",
 
     location: "Dharmanagar, Tripura, India",
 
@@ -79,6 +79,8 @@ const knowledge = {
 
     "machine learning foundations": [
       "Machine Learning Fundamentals (project-based training)",
+      "Linear Regression from Scratch",
+      "Batch, Stochastic & Mini-batch Gradient Descent",
       "Data Preprocessing",
       "Exploratory Data Analysis",
       "Python, Pandas & NumPy"
@@ -225,6 +227,47 @@ const knowledge = {
         "Vehicle analysis.",
         "Urban vs Rural comparison."
       ]
+    },
+    {
+      name: "Machine Learning from Scratch",
+      status: "Ongoing · Linear regression implemented",
+      technologies: ["Python", "NumPy", "Pandas", "Matplotlib", "Jupyter"],
+      description:
+        "Building machine learning algorithms with Python and NumPy to understand the mathematics behind training and prediction. Current work explores linear regression with closed-form solutions and three gradient descent methods.",
+      features: [
+        "Simple and multiple linear regression implemented from scratch.",
+        "Closed-form solutions and batch, stochastic, and mini-batch gradient descent.",
+        "Manual regression metrics, including MAE, MSE, RMSE, and R².",
+        "Mathematical explanations and Jupyter notebooks accompany the implementations.",
+        "Ongoing learning project; classification, clustering, and other algorithms are planned."
+      ],
+      repository: "https://github.com/rudrapratap601/ML-From-Scratch"
+    },
+    {
+      name: "E-Commerce Order Insights v2 (Python Project)",
+      technologies: ["Python", "OOP", "Data Cleaning", "Data Validation", "EDA"],
+      description:
+        "A pure Python order analysis system that cleans and validates e-commerce data, then summarizes revenue, customer spending, and category and monthly trends without external libraries.",
+      features: [
+        "Organizes order processing with Order and OrderManager classes.",
+        "Handles missing or invalid quantities, prices, discounts, payment modes, categories, and dates.",
+        "Calculates total revenue and identifies top customers by spending.",
+        "Breaks down revenue by category and month and identifies the most active order day."
+      ],
+      repository: "https://github.com/rudrapratap601/Pure-Python-Projects/tree/main/Python_Project/ecommerce_order_insights/v2_advanced_ds"
+    },
+    {
+      name: "Student Data Management System",
+      technologies: ["Python", "OOP", "CSV", "File Handling", "Jupyter"],
+      description:
+        "A Python academic management system for students, courses, enrollments, and grades. Uses object-oriented design and CSV files to save and load records.",
+      features: [
+        "Adds undergraduate and graduate students, creates courses, and manages enrollments.",
+        "Assigns marks and grades and generates student report cards.",
+        "Practices inheritance, polymorphism, and encapsulation through student classes.",
+        "Persists students, courses, and enrollments in CSV files with input validation and error handling."
+      ],
+      repository: "https://github.com/rudrapratap601/Pure-Python-Projects/tree/main/Python_Project/OOPS_project"
     }
   ],
 
@@ -305,7 +348,7 @@ const knowledge = {
     {
       question: "What type of projects has he completed?",
       answer:
-        "Retail analytics, market sentiment analysis, road accident analytics, full-stack analytics platforms and data operations projects."
+        "Retail analytics, market sentiment analysis, road accident analytics, full-stack analytics platforms and data operations projects. His ongoing Machine Learning from Scratch project currently includes linear regression implementations."
     }
   ],
 

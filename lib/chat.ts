@@ -24,6 +24,9 @@ export function portfolioAnswer(question: string): string {
       (q.includes("blinkit") && p.name.includes("Blinkit")) ||
       (q.includes("trader") && p.name.includes("Trader")) ||
       (q.includes("road") && p.name.includes("Road")) ||
+      (/e-commerce|ecommerce|order insights/.test(q) && p.name.startsWith("E-Commerce")) ||
+      (/student.*(system|management)|\boops_project\b/.test(q) && p.name === "Student Data Management System") ||
+      (/from scratch|from-scratch|linear regression|gradient descent/.test(q) && p.name === "Machine Learning from Scratch") ||
       ((q.includes("platform") || q.includes("streamlit")) &&
         p.name.includes("Platform")),
   );
@@ -36,6 +39,7 @@ export function portfolioAnswer(question: string): string {
         ? project.features || []
         : project.insights || []),
       project.demo || "",
+      ("repository" in project && project.repository) || "",
     ]
       .filter(Boolean)
       .join("\n");

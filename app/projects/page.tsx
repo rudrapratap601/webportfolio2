@@ -5,7 +5,7 @@ export default function Projects() {
     <Page
       eyebrow="THE WORK"
       title="From datasets to decisions."
-      intro="Four projects across analytics platforms, retail performance, trader behavior, and road safety. Explore the methods and findings behind each one."
+      intro="Explore analytics platforms, retail performance, trader behavior, road safety, machine learning from scratch, and pure Python applications. Filter by category to discover the methods and implementations behind each project."
     >
       <ProjectCards />
       <ContactCTA />
