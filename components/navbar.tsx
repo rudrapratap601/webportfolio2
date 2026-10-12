@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ThemeToggle } from "./theme-toggle";
 const items = [
   ["Home", "/"],
   ["About", "/about"],
@@ -16,7 +17,7 @@ export function Navbar() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0b1014]/95 backdrop-blur-xl">
+    <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0b1014]/95 backdrop-blur-xl">
       <nav
         aria-label="Main navigation"
         className="mx-auto flex max-w-[1180px] items-center justify-between px-6 py-5"
@@ -46,6 +47,8 @@ export function Navbar() {
             </Link>
           ))}
         </div>
+        <div className="flex items-center gap-2">
+        <ThemeToggle />
         <button
           className="rounded p-2 lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -55,6 +58,7 @@ export function Navbar() {
         >
           {open ? <X /> : <Menu />}
         </button>
+        </div>
       </nav>
       {open && (
         <nav

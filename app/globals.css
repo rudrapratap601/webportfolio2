@@ -949,3 +949,40 @@ button:disabled {
 .project-empty { padding:64px 24px; border:1px dashed #91d9be40; border-radius:14px; text-align:center; background:#15212a; }
 .project-empty h2 { font-size:24px; margin-bottom:12px; }
 .project-empty p { color:#aab5bd; margin-bottom:24px; }
+/* Theme controls and light palette. Dark remains the initial appearance. */
+.theme-toggle { display:inline-grid; place-items:center; width:42px; height:42px; flex-shrink:0; border:1px solid #a4efd740; border-radius:50%; color:#a4efd7; background:#172923; }
+.theme-toggle:hover { background:#264038; }
+html.light { --background:150 20% 97%; --foreground:210 25% 12%; --card:0 0% 100%; --card-foreground:210 25% 12%; --popover:0 0% 100%; --popover-foreground:210 25% 12%; --primary:165 65% 25%; --primary-foreground:0 0% 100%; --secondary:150 15% 92%; --secondary-foreground:210 25% 12%; --muted:150 15% 92%; --muted-foreground:210 12% 35%; --accent:155 35% 90%; --accent-foreground:165 65% 22%; --border:160 15% 80%; --input:160 15% 80%; --ring:165 65% 30%; }
+.light body { background:#f5f8f6; color:#17242c; }
+.light .site-header,.light #mobile-menu { background:#f5f8f6f5; border-color:#cad8d1; }
+.light .site-header .text-slate-400 { color:#536570; }
+.light .site-header .text-teal-200,.light .site-header a:hover { color:#116b55; }
+.light .theme-toggle { color:#116b55; background:#e4f2eb; border-color:#b4cfc1; }
+.light .theme-toggle:hover { background:#d1e9de; }
+.light .content-card,.light .work-card,.light .screenshot-card,.light .project-empty,.light .chat-shell { background:#fff; border-color:#cbd9d2; }
+.light .message-card { background:linear-gradient(140deg,#edf7f0,#edf3fa); border-color:#cbd9d2; box-shadow:0 20px 60px #2544380c; }
+.light .eyebrow,.light .text-link,.light .hero-grid h1 em,.light .timeline-item h3,.light .chat-speaker,.light .portrait-mark { color:#116b55; }
+.light .hero-name span,.light .hero-description,.light .hero-tools,.light .page-intro,.light .work-body p,.light .content-card p,.light .content-card li,.light .work-body li,.light .timeline-meta,.light .proof-strip span,.light .message-intro,.light .chat-header p,.light .chat-mode,.light .project-empty p,.light .portrait-panel figcaption div>span:last-child { color:#4b606b; }
+.light .tag-list span,.light .chat-suggestion { color:#425a63; border-color:#cbd9d2; }
+.light .work-body summary { color:#243e39; }
+.light .proof-strip,.light .work-body details,.light .content-card hr,.light .chat-header,.light .chat-compose,.light footer,.light footer .border-t { border-color:#cbd9d2; }
+.light .project-category { color:#116b55; background:#e0f2e8; }
+.light .project-filters button { color:#36534a; background:#e8efeb; border-color:#c4d8cd; }
+.light .project-filters button[aria-pressed=true] { background:linear-gradient(110deg,#80e3b5,#74bcdf); color:#08221d; }
+.light .assistant-banner,.light .portrait-badge { background:#e2f1e8; border-color:#bbd7c8; color:#183e30; }
+.light .assistant-banner p:last-child { color:#456353; }
+.light .portrait-image { box-shadow:0 25px 65px #264d3520; }
+.light .portrait-orbit { border-color:#629d8240; }
+.light .timeline-marker { background:#e1f3e9; color:#116b55; border-color:#388f71; box-shadow:0 0 0 6px #f5f8f6; }
+.light .timeline::before { background:linear-gradient(#3c9478,#9ccab6); }
+.light .timeline-item::before { background:#73a58e; }
+.light .chat-message { background:#eef3f1; }
+.light .chat-message.user { background:#dcefe3; }
+.light .chat-suggestion:hover { background:#e1f0e7; }
+.light .message-card label { color:#304c41; }
+.light .message-card input:not([type=checkbox]),.light .message-card textarea,.light .chat-compose textarea { background:#fff; color:#17242c; border-color:#b6cec1; }
+.light .message-card input::placeholder,.light .message-card textarea::placeholder,.light .chat-compose textarea::placeholder { color:#65786f; }
+.light .message-card input:focus,.light .message-card textarea:focus { background:#fff; border-color:#147958; }
+.light .form-success { color:#126445; }.light .form-error { color:#a03024; }.light .form-privacy { color:#536d61; }
+.light .glass-card { background:#ffffff80; border-color:#cad8d1; }
+.light :focus-visible { outline-color:#11785c; }

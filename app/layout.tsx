@@ -1,4 +1,5 @@
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
   icons: { icon: "/icon.svg" },
@@ -48,8 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="font-sans">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="font-sans"><ThemeProvider>{children}</ThemeProvider></body>
     </html>
   );
 }
