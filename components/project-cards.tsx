@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { SearchSort } from "./search-sort";
 import Image, { type StaticImageData } from "next/image";
 import { ArrowUpRight, Github, Expand, Activity } from "lucide-react";
 import {
@@ -81,6 +82,8 @@ export function ProjectCards({
 }: {
   featuredOnly?: boolean;
 }) {
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState("default");
   const [category, setCategory] = useState("Top 4");
   const [selected, setSelected] = useState<number | null>(null);
   const [failedImages, setFailedImages] = useState<number[]>([]);
@@ -94,7 +97,9 @@ export function ProjectCards({
       featuredOnly || category === "Top 4"
         ? knowledge.featuredProjects.includes(project.name)
         : previews[project.name]?.category === category,
-    );
+    )
+    .filter(({project}) => featuredOnly || [project.name, project.description, ...project.technologies, previews[project.name]?.category].join(" ").toLowerCase().includes(query.trim().toLowerCase()))
+  .sort((a,b) => featuredOnly || sort === "default" ? 0 : sort === "az" ? a.project.name.localeCompare(b.project.name) : b.project.name.localeCompare(a.project.name));
   return (
     <>
       {!featuredOnly && (
@@ -115,7 +120,8 @@ export function ProjectCards({
           ))}
         </div>
       )}
-      <p className="sr-only" role="status">
+      {!featuredOnly && <SearchSort query={query} sort={sort} onQuery={setQuery} onSort={setSort} label={`in ${category}`} />}
+      <p className={featuredOnly ? "sr-only" : "mb-6 text-sm text-muted-foreground"} role="status">
         Showing {visible.length} projects
       </p>
       <div className="project-grid screenshot-grid">
@@ -241,10 +247,10 @@ export function ProjectCards({
       {visible.length === 0 && (
         <div className="project-empty">
           <h2>{category}</h2>
-          <p>New projects will appear here as they’re added.</p>
+          <p>{query.trim() ? "No projects match your search in this category. Clear the search or choose another category." : "New projects will appear here as they’re added."}</p>
           <button
             className="btn-secondary"
-            onClick={() => setCategory("Top 4")}
+            onClick={() => { setCategory("Top 4"); setQuery(""); setSort("default"); }}
           >
             Explore Top 4
           </button>

@@ -8,7 +8,7 @@ export function MLImplementationList() {
 const [query,setQuery]=useState("");
 const [sort,setSort]=useState("default");
 const visible=mlImplementations.filter(item=>[item.title,item.description,item.family,...item.topics].join(" ").toLowerCase().includes(query.trim().toLowerCase())).sort((a,b)=>sort==="default"?0:sort==="az"?a.title.localeCompare(b.title):b.title.localeCompare(a.title));
-return <><SearchSort query={query} sort={sort} onQuery={setQuery} onSort={setSort} label="models and methods" /><p role="status">Showing {visible.length} of {mlImplementations.length} implementations</p>
+return <><SearchSort query={query} sort={sort} onQuery={setQuery} onSort={setSort} label="models and methods" placeholder="Find a model, method, or tool…" /><p role="status">Showing {visible.length} of {mlImplementations.length} implementations</p>
     <div className="content-grid ml-case-grid">
       {visible.map(item => <article key={item.id} className="content-card ml-method-card" id={item.id}>
         <p className="eyebrow">{item.family}</p>
