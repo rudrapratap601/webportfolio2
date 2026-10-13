@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
 import { ArrowUpRight, Github, Expand, Activity } from "lucide-react";
 import {
@@ -52,7 +53,7 @@ const previews: Record<string, Preview> = {
     label: "Machine learning foundations",
     code: "https://github.com/rudrapratap601/ML-From-Scratch",
     implementation:
-      "https://github.com/rudrapratap601/ML-From-Scratch/tree/main/linear_regression",
+      "/projects/ml-from-scratch",
   },
   "E-Commerce Order Insights v2 (Python Project)": {
     category: "Pure Python Projects",
@@ -84,7 +85,9 @@ export function ProjectCards({
   const [selected, setSelected] = useState<number | null>(null);
   const [failedImages, setFailedImages] = useState<number[]>([]);
   const selectedImage =
-    selected !== null ? previews[knowledge.projects[selected].name]?.image : undefined;
+    selected !== null
+      ? previews[knowledge.projects[selected].name]?.image
+      : undefined;
   const visible = knowledge.projects
     .map((project, index) => ({ project, index }))
     .filter(({ project }) =>
@@ -202,14 +205,12 @@ export function ProjectCards({
                     </a>
                   )}
                   {preview.implementation ? (
-                    <a
+                    <Link
                       href={preview.implementation}
                       className="btn-primary"
-                      target="_blank"
-                      rel="noopener noreferrer"
                     >
-                      <ArrowUpRight size={16} /> Explore implementations
-                    </a>
+                      <ArrowUpRight size={16} /> Explore models & demos
+                    </Link>
                   ) : project.demo ? (
                     <a
                       href={project.demo}
@@ -226,7 +227,9 @@ export function ProjectCards({
                       onClick={() => setSelected(index)}
                     >
                       <Expand size={15} /> View{" "}
-                      {project.name === "Trader Performance vs Market Sentiment" ? "chart" : "dashboard"}
+                      {project.name === "Trader Performance vs Market Sentiment"
+                        ? "chart"
+                        : "dashboard"}
                     </button>
                   ) : null}
                 </div>
@@ -257,8 +260,8 @@ export function ProjectCards({
           <DialogContent className="project-lightbox">
             <DialogTitle>{knowledge.projects[selected].name}</DialogTitle>
             <DialogDescription>
-              {previews[knowledge.projects[selected].name].label}. Open the original image to inspect the
-              full resolution.
+              {previews[knowledge.projects[selected].name].label}. Open the
+              original image to inspect the full resolution.
             </DialogDescription>
             <div className="project-lightbox-image">
               <Image
