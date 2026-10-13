@@ -1007,3 +1007,23 @@ html.light { --background:150 20% 97%; --foreground:210 25% 12%; --card:0 0% 100
 .ml-method-card { display:flex; flex-direction:column; align-items:flex-start; }
 .ml-method-description { margin:20px 0; }
 .ml-method-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:auto; padding-top:24px; }
+
+/* Project discovery toolbar */
+.search-toolbar { display:flex; align-items:flex-end; gap:16px; padding:20px; margin:28px 0 20px; border:1px solid hsl(var(--border)); border-radius:16px; background:hsl(var(--card)); }
+.search-toolbar-field { flex:1; min-width:0; }
+.search-toolbar label { display:block; margin-bottom:9px; color:hsl(var(--muted-foreground)); font-size:12px; font-weight:600; }
+.search-toolbar-input { display:flex; align-items:center; gap:12px; min-height:48px; padding:0 14px; background:hsl(var(--background)); border:1px solid hsl(var(--input)); border-radius:10px; color:hsl(var(--muted-foreground)); }
+.search-toolbar-input:focus-within { border-color:#64bfa0; box-shadow:0 0 0 3px #64bfa018; }
+.search-toolbar-input input { width:100%; min-width:0; height:46px; background:transparent; color:hsl(var(--foreground)); font-size:14px; outline:none; }
+.search-toolbar-input input::-webkit-search-cancel-button { display:none; }
+.search-toolbar-input input::placeholder { color:hsl(var(--muted-foreground)); }
+.search-toolbar-input button { display:grid; place-items:center; width:30px; height:30px; flex-shrink:0; border-radius:6px; }
+.search-toolbar-input button:hover { background:hsl(var(--accent)); }
+.search-toolbar-sort { flex:0 0 200px; }
+.search-sort-trigger { height:48px; gap:10px; border-radius:10px; }
+.search-sort-trigger>span { flex:1; text-align:left; }
+.search-sort-menu { border-radius:12px; padding:5px; box-shadow:0 15px 40px #0003; }
+.search-sort-menu [role=option] { padding-top:11px; padding-bottom:11px; border-radius:7px; cursor:pointer; }
+.search-toolbar-reset { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:48px; padding:0 14px; border-radius:10px; border:1px solid hsl(var(--border)); color:hsl(var(--foreground)); font-size:13px; }
+.search-toolbar-reset:hover:not(:disabled) { background:hsl(var(--accent)); }
+@media(max-width:640px) { .search-toolbar { flex-wrap:wrap; padding:16px; gap:12px; }.search-toolbar-field { flex-basis:100%; }.search-toolbar-sort { flex:1; min-width:0; }.search-toolbar-reset { flex-shrink:0; } }
