@@ -1,3 +1,4 @@
+import knowledge from "@/data/knowledge";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Download, Sparkles } from "lucide-react";
@@ -46,11 +47,11 @@ export default function Home() {
         </section>
         <div className="proof-strip">
           <div>
-            <strong>04</strong>
+            <strong>{String(knowledge.featuredProjects.length).padStart(2, "0")}</strong>
             <span>Featured projects</span>
           </div>
           <div>
-            <strong>02</strong>
+            <strong>{String(knowledge.experience.length).padStart(2, "0")}</strong>
             <span>Work & training experiences</span>
           </div>
           <div>

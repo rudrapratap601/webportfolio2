@@ -37,9 +37,7 @@ export function portfolioAnswer(question: string): string {
       project.name,
       project.description,
       "Tools: " + project.technologies.join(", "),
-      ...("features" in project
-        ? project.features || []
-        : project.insights || []),
+      ...project.features,
       project.demo || "",
       ("repository" in project && project.repository) || "",
     ]

@@ -38,18 +38,15 @@ test("featured answers remain correct when project data is reordered", () => {
     for (const name of knowledge.featuredProjects) assert.ok(answer.includes(name));
     assert.ok(!answer.includes("Road Accident"));
   }
-  const source = fs.readFileSync("components/project-cards.tsx", "utf8");
-  const declaration = source.slice(source.indexOf("const previews:"), source.indexOf("const categories"));
-  const js = ts.transpileModule(declaration + "\nmodule.exports = previews;", {
-    compilerOptions: { module: ts.ModuleKind.CommonJS }
-  }).outputText;
-  const context = { module: { exports: {} }, platform: "platform", blinkit: "blinkit", road: "road" };
-  require("node:vm").runInNewContext(js, context);
-  const previews = context.module.exports;
-  for (const project of [...knowledge.projects].reverse()) assert.ok(previews[project.name]);
-  assert.equal(previews["Machine Learning from Scratch"].category, "ML Projects");
-  assert.equal(previews["Machine Learning from Scratch"].image, undefined);
-  assert.equal(previews["Road Accident Casualty Analysis"].image, "road");
+  const { projects } = load("data/projects.ts");
+  assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
+  for (const project of [...projects].reverse()) {
+    assert.ok(project.category);
+    if (project.image) assert.ok(fs.existsSync(path.join("public", project.image)));
+    if (project.caseStudy) assert.ok(fs.existsSync(path.join("app", project.caseStudy, "page.tsx")));
+  }
+  assert.equal(projects.find(p => p.name === "Machine Learning from Scratch").image, undefined);
+  assert.equal(projects.find(p => p.name === "Road Accident Casualty Analysis").image, "/projects/road-accident-dashboard.png");
 });
 const originalFetch = global.fetch;
 afterEach(() => {
