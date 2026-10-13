@@ -986,6 +986,27 @@ html.light { --background:150 20% 97%; --foreground:210 25% 12%; --card:0 0% 100
 .light .form-success { color:#126445; }.light .form-error { color:#a03024; }.light .form-privacy { color:#536d61; }
 .light .glass-card { background:#ffffff80; border-color:#cad8d1; }
 .light :focus-visible { outline-color:#11785c; }
+.ml-case-grid { margin:32px 0; }
+.ml-demo { margin-top:32px; }
+.demo-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:26px 0; }
+.demo-controls label { flex:1 1 230px; max-width:360px; margin-right:12px; font-size:14px; }
+.demo-controls input { display:block; width:100%; margin-top:14px; accent-color:#319a7c; }
+.demo-metrics { display:flex; flex-wrap:wrap; gap:20px 32px; padding:20px 0; border-block:1px solid hsl(var(--border)); font-size:13px; }
+.demo-metrics strong { display:block; margin-top:5px; font-size:17px; font-variant-numeric:tabular-nums; }
+.demo-charts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; margin:26px 0; }
+.demo-charts figure { min-width:0; }
+.demo-charts figcaption { font-size:12px; color:hsl(var(--muted-foreground)); }
+.demo-charts svg { width:100%; height:auto; margin-top:12px; }
+.demo-charts text { fill:currentColor; font:12px Arial,sans-serif; }
+.demo-axis { stroke:hsl(var(--muted-foreground)); stroke-width:1; fill:none; }
+.demo-point { fill:#7cb7e8; }.demo-fit { stroke:#60d6ac; stroke-width:3; fill:none; }
+.light .demo-point { fill:#326caa; }.light .demo-fit { stroke:#12795b; }
+.ml-demo>p { margin-bottom:14px; }
+@media(max-width:700px) { .demo-charts { grid-template-columns:1fr; }.demo-controls label { max-width:none; flex-basis:100%; } }
+.ml-hub-summary { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:32px; color:hsl(var(--muted-foreground)); font-size:13px; }
+.ml-method-card { display:flex; flex-direction:column; align-items:flex-start; }
+.ml-method-description { margin:20px 0; }
+.ml-method-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:auto; padding-top:24px; }
 
 /* Project discovery toolbar */
 .search-toolbar { display:flex; align-items:flex-end; gap:16px; padding:20px; margin:28px 0 20px; border:1px solid hsl(var(--border)); border-radius:16px; background:hsl(var(--card)); }

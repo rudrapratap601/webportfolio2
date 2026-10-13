@@ -65,3 +65,9 @@ The gallery defaults to Top 4 (the first four entries in data/knowledge.ts), wit
 
 ## Certificate links
 Edit the url field for each entry in data/knowledge.ts under certifications. Use a public HTTPS certificate URL (issuer verification page, PDF, or publicly shared document). Empty or invalid URLs keep the View certificate button disabled. Valid links open in a new tab. Rebuild/redeploy after updating these source-controlled values; no admin panel or database is required.
+
+### Adding an ML implementation
+
+Edit `data/ml-implementations.ts` and append an entry with a unique `id`, `title`, `family`, `description`, `topics`, and a GitHub `code` URL. The implementations hub creates the card automatically. Use this for completed code; keep planned models in the roadmap text.
+
+For an interactive case study, create a page under `app/projects/ml-from-scratch/<slug>/page.tsx`, then set the entry's optional `caseStudy` to `/projects/ml-from-scratch/<slug>`. Omit it until the page exists. The batch gradient-descent page is a working example. Check both themes and mobile layout before publishing.

@@ -3,7 +3,7 @@ import { useId } from "react";
 import { Search, X, RotateCcw, ArrowDownWideNarrow } from "lucide-react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./ui/select";
 
-export function SearchSort({ query, sort, onQuery, onSort, label = "projects" }: { query:string; sort:string; onQuery:(value:string)=>void; onSort:(value:string)=>void; label?:string }) {
+export function SearchSort({ query, sort, onQuery, onSort, label = "projects", placeholder = "Find a project, skill, or tool…" }: { query:string; sort:string; onQuery:(value:string)=>void; onSort:(value:string)=>void; label?:string; placeholder?:string }) {
   const id = useId();
   const changed = query.length > 0 || sort !== "default";
   return <div className="search-toolbar">
@@ -11,7 +11,7 @@ export function SearchSort({ query, sort, onQuery, onSort, label = "projects" }:
       <label htmlFor={`${id}-search`}>Search {label}</label>
       <div className="search-toolbar-input">
         <Search size={18} aria-hidden="true" />
-        <input id={`${id}-search`} type="search" value={query} onChange={e=>onQuery(e.target.value)} placeholder="Find a project, skill, or tool…" />
+        <input id={`${id}-search`} type="search" value={query} onChange={e=>onQuery(e.target.value)} placeholder={placeholder} />
         {query && <button type="button" aria-label="Clear search" onClick={()=>{onQuery("");document.getElementById(`${id}-search`)?.focus();}}><X size={16} aria-hidden="true" /></button>}
       </div>
     </div>
