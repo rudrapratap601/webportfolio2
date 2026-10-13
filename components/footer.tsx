@@ -1,3 +1,4 @@
+import { ResumeOptions } from "@/components/resume-options";
 import Link from "next/link";
 
 import {
@@ -93,9 +94,7 @@ export function Footer() {
 
           <div className="lg:text-right">
             <h3 className="mb-4 text-sm font-semibold">Download Resume</h3>
-            <a href="/resume.pdf" download className="btn-primary inline-flex">
-              Download CV
-            </a>
+            <ResumeOptions />
           </div>
         </div>
 

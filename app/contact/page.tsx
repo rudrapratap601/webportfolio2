@@ -1,3 +1,4 @@
+import { ResumeOptions } from "@/components/resume-options";
 import { ContactForm } from "@/components/contact-form";
 import { Page } from "@/components/portfolio";
 import knowledge from "@/data/knowledge";
@@ -45,9 +46,7 @@ export default function Contact() {
           </a>
           <hr />
           <p>{knowledge.personal.location}</p>
-          <a href="/resume.pdf" download className="text-link">
-            Download my resume <ArrowUpRight size={16} />
-          </a>
+          <ResumeOptions />
         </article>
       </div><ContactForm /></div>
     </Page>

@@ -1,3 +1,4 @@
+import { ResumeOptions } from "@/components/resume-options";
 import knowledge from "@/data/knowledge";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,9 +30,7 @@ export default function Home() {
               <Link href="/projects" className="btn-primary">
                 Explore my work <ArrowUpRight size={18} />
               </Link>
-              <a href="/resume.pdf" download className="btn-secondary">
-                <Download size={16} /> Resume
-              </a>
+              <ResumeOptions />
             </div>
             <div className="hero-tools">
               PYTHON <span>/</span> SQL <span>/</span> POWER BI <span>/</span>{" "}
