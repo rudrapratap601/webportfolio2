@@ -1,11 +1,26 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { initialFit, observations, step, sampledStep } from "@/lib/gradient-descent";
+import {
+  initialFit,
+  observations,
+  step,
+  sampledStep,
+} from "@/lib/gradient-descent";
 
-export function GradientDemo({ method = "batch" }: { method?: "batch" | "stochastic" | "mini-batch" }) {
+export function GradientDemo({
+  method = "batch",
+}: {
+  method?: "batch" | "stochastic" | "mini-batch";
+}) {
   const [batchSize, setBatchSize] = useState(5);
-  const update = useCallback((fit: ReturnType<typeof initialFit>, rate: number) => method === "batch" ? step(fit, rate) : sampledStep(fit, rate, method === "stochastic" ? 1 : batchSize), [method, batchSize]);
+  const update = useCallback(
+    (fit: ReturnType<typeof initialFit>, rate: number) =>
+      method === "batch"
+        ? step(fit, rate)
+        : sampledStep(fit, rate, method === "stochastic" ? 1 : batchSize),
+    [method, batchSize],
+  );
   const [rate, setRate] = useState(0.1);
   const [history, setHistory] = useState(() => [initialFit()]);
   const [running, setRunning] = useState(false);
@@ -42,12 +57,34 @@ export function GradientDemo({ method = "batch" }: { method?: "batch" | "stochas
       <p className="eyebrow">TRY IT YOURSELF · SYNTHETIC DATA</p>
       <h2 id="demo-heading">Teach a line to fit the data.</h2>
       <p>
-        Each step updates the parameters using {method === "batch" ? "all 21 observations" : method === "stochastic" ? "one shuffled observation" : `up to ${batchSize} shuffled observations`}. The chart measures error across all 21 observations; sampled updates can temporarily increase it.
-        Try 0.01 for slow learning, 0.1 for steady progress, and 1.1 to see an
-        unstable fit.
+        Each step updates the parameters using{" "}
+        {method === "batch"
+          ? "all 21 observations"
+          : method === "stochastic"
+            ? "one shuffled observation"
+            : `up to ${batchSize} shuffled observations`}
+        . The chart measures error across all 21 observations; sampled updates
+        can temporarily increase it. Try 0.01 for slow learning, 0.1 for steady
+        progress, and 1.1 to see an unstable fit.
       </p>
       <div className="demo-controls">
-        {method === "mini-batch" && <label htmlFor="batch-size">Batch size: {batchSize}<input id="batch-size" type="range" min="1" max="21" step="1" value={batchSize} onChange={e => { setBatchSize(Number(e.target.value)); reset(); }} /></label>}
+        {method === "mini-batch" && (
+          <label htmlFor="batch-size">
+            Batch size: {batchSize}
+            <input
+              id="batch-size"
+              type="range"
+              min="1"
+              max="21"
+              step="1"
+              value={batchSize}
+              onChange={(e) => {
+                setBatchSize(Number(e.target.value));
+                reset();
+              }}
+            />
+          </label>
+        )}
         <label htmlFor="learning-rate">
           Learning rate: <strong>{rate.toFixed(2)}</strong>
           <input
@@ -175,9 +212,9 @@ export function GradientDemo({ method = "batch" }: { method?: "batch" | "stochas
             : "Changing the learning rate resets the experiment. You can pause or advance one step at a time."}
       </p>
       <p>
-        This browser demo illustrates {method} gradient descent in TypeScript. The
-        linked repository contains the Python implementations. These values are
-        illustrative training results, not held-out model evaluation.
+        This browser demo illustrates {method} gradient descent in TypeScript.
+        The linked repository contains the Python implementations. These values
+        are illustrative training results, not held-out model evaluation.
       </p>
     </section>
   );

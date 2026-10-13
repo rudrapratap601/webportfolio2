@@ -26,9 +26,7 @@ export function ProjectCards({
   const [selected, setSelected] = useState<number | null>(null);
   const [failedImages, setFailedImages] = useState<number[]>([]);
   const selectedImage =
-    selected !== null
-      ? knowledge.projects[selected].image
-      : undefined;
+    selected !== null ? knowledge.projects[selected].image : undefined;
   const visible = knowledge.projects
     .map((project, index) => ({ project, index }))
     .filter(({ project }) =>
@@ -36,8 +34,26 @@ export function ProjectCards({
         ? knowledge.featuredProjects.includes(project.name)
         : project.category === category,
     )
-    .filter(({project}) => featuredOnly || [project.name, project.description, ...project.technologies, project.category].join(" ").toLowerCase().includes(query.trim().toLowerCase()))
-  .sort((a,b) => featuredOnly || sort === "default" ? 0 : sort === "az" ? a.project.name.localeCompare(b.project.name) : b.project.name.localeCompare(a.project.name));
+    .filter(
+      ({ project }) =>
+        featuredOnly ||
+        [
+          project.name,
+          project.description,
+          ...project.technologies,
+          project.category,
+        ]
+          .join(" ")
+          .toLowerCase()
+          .includes(query.trim().toLowerCase()),
+    )
+    .sort((a, b) =>
+      featuredOnly || sort === "default"
+        ? 0
+        : sort === "az"
+          ? a.project.name.localeCompare(b.project.name)
+          : b.project.name.localeCompare(a.project.name),
+    );
   return (
     <>
       {!featuredOnly && (
@@ -58,8 +74,21 @@ export function ProjectCards({
           ))}
         </div>
       )}
-      {!featuredOnly && <SearchSort query={query} sort={sort} onQuery={setQuery} onSort={setSort} label={`in ${category}`} />}
-      <p className={featuredOnly ? "sr-only" : "mb-6 text-sm text-muted-foreground"} role="status">
+      {!featuredOnly && (
+        <SearchSort
+          query={query}
+          sort={sort}
+          onQuery={setQuery}
+          onSort={setSort}
+          label={`in ${category}`}
+        />
+      )}
+      <p
+        className={
+          featuredOnly ? "sr-only" : "mb-6 text-sm text-muted-foreground"
+        }
+        role="status"
+      >
         Showing {visible.length} projects
       </p>
       <div className="project-grid screenshot-grid">
@@ -67,8 +96,7 @@ export function ProjectCards({
           const image = failedImages.includes(index)
             ? undefined
             : project.image;
-          const details =
-            project.features;
+          const details = project.features;
           return (
             <article
               className="work-card screenshot-card"
@@ -90,7 +118,6 @@ export function ProjectCards({
                     onError={() =>
                       setFailedImages((previous) => [...previous, index])
                     }
-
                   />
                   <span className="preview-expand">
                     <Expand size={16} /> View preview
@@ -145,10 +172,7 @@ export function ProjectCards({
                     </a>
                   )}
                   {project.caseStudy ? (
-                    <Link
-                      href={project.caseStudy}
-                      className="btn-primary"
-                    >
+                    <Link href={project.caseStudy} className="btn-primary">
                       <ArrowUpRight size={16} /> Explore models & demos
                     </Link>
                   ) : project.demo ? (
@@ -181,10 +205,18 @@ export function ProjectCards({
       {visible.length === 0 && (
         <div className="project-empty">
           <h2>{category}</h2>
-          <p>{query.trim() ? "No projects match your search in this category. Clear the search or choose another category." : "New projects will appear here as they’re added."}</p>
+          <p>
+            {query.trim()
+              ? "No projects match your search in this category. Clear the search or choose another category."
+              : "New projects will appear here as they’re added."}
+          </p>
           <button
             className="btn-secondary"
-            onClick={() => { setCategory("Top 4"); setQuery(""); setSort("default"); }}
+            onClick={() => {
+              setCategory("Top 4");
+              setQuery("");
+              setSort("default");
+            }}
           >
             Explore Top 4
           </button>
@@ -200,8 +232,8 @@ export function ProjectCards({
           <DialogContent className="project-lightbox">
             <DialogTitle>{knowledge.projects[selected].name}</DialogTitle>
             <DialogDescription>
-              {knowledge.projects[selected].imageLabel || "Project preview"}. Open the
-              original image to inspect the full resolution.
+              {knowledge.projects[selected].imageLabel || "Project preview"}.
+              Open the original image to inspect the full resolution.
             </DialogDescription>
             <div className="project-lightbox-image">
               <Image

@@ -48,16 +48,16 @@ export function Navbar() {
           ))}
         </div>
         <div className="flex items-center gap-2">
-        <ThemeToggle />
-        <button
-          className="rounded p-2 lg:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X /> : <Menu />}
-        </button>
+          <ThemeToggle />
+          <button
+            className="rounded p-2 lg:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X /> : <Menu />}
+          </button>
         </div>
       </nav>
       {open && (

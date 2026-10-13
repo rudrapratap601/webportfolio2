@@ -28,8 +28,16 @@ function DataBar({
       meshRef.current.position.y = animatedHeight / 2;
 
       const targetScale = hovered ? 1.3 : 1;
-      meshRef.current.scale.x = THREE.MathUtils.lerp(meshRef.current.scale.x, targetScale, 0.1);
-      meshRef.current.scale.z = THREE.MathUtils.lerp(meshRef.current.scale.z, targetScale, 0.1);
+      meshRef.current.scale.x = THREE.MathUtils.lerp(
+        meshRef.current.scale.x,
+        targetScale,
+        0.1,
+      );
+      meshRef.current.scale.z = THREE.MathUtils.lerp(
+        meshRef.current.scale.z,
+        targetScale,
+        0.1,
+      );
     }
   });
 
@@ -117,7 +125,8 @@ function ChartPanel({ position }: { position: [number, number, number] }) {
 
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
+      groupRef.current.rotation.y =
+        Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
     }
   });
 
@@ -192,12 +201,25 @@ function GlowingOrb({
           opacity={0.3}
         />
       </mesh>
-      <pointLight position={position} color={color} intensity={1.5} distance={5} />
+      <pointLight
+        position={position}
+        color={color}
+        intensity={1.5}
+        distance={5}
+      />
     </Float>
   );
 }
 
-function DataConnection({ start, end, color }: { start: [number, number, number]; end: [number, number, number]; color: string }) {
+function DataConnection({
+  start,
+  end,
+  color,
+}: {
+  start: [number, number, number];
+  end: [number, number, number];
+  color: string;
+}) {
   const meshRef = useRef<THREE.Mesh>(null);
 
   const { midpoint, length, direction } = useMemo(() => {
@@ -224,13 +246,15 @@ function DataConnection({ start, end, color }: { start: [number, number, number]
   }, [direction]);
 
   return (
-    <mesh
-      ref={meshRef}
-      position={midpoint.toArray()}
-      quaternion={quaternion}
-    >
+    <mesh ref={meshRef} position={midpoint.toArray()} quaternion={quaternion}>
       <cylinderGeometry args={[0.02, 0.02, length, 8]} />
-      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5} transparent opacity={0.5} />
+      <meshStandardMaterial
+        color={color}
+        emissive={color}
+        emissiveIntensity={0.5}
+        transparent
+        opacity={0.5}
+      />
     </mesh>
   );
 }
@@ -244,12 +268,12 @@ function Scene() {
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
         groupRef.current.rotation.y,
         pointer.x * 0.3,
-        0.05
+        0.05,
       );
       groupRef.current.rotation.x = THREE.MathUtils.lerp(
         groupRef.current.rotation.x,
         -pointer.y * 0.15,
-        0.05
+        0.05,
       );
     }
   });
@@ -330,10 +354,26 @@ function Scene() {
           <DataNode key={i} position={pos} color={nodeColors[i]} size={0.3} />
         ))}
 
-        <DataConnection start={nodePositions[0]} end={nodePositions[1]} color={nodeColors[0]} />
-        <DataConnection start={nodePositions[1]} end={nodePositions[2]} color={nodeColors[1]} />
-        <DataConnection start={nodePositions[2]} end={nodePositions[3]} color={nodeColors[2]} />
-        <DataConnection start={nodePositions[3]} end={nodePositions[0]} color={nodeColors[3]} />
+        <DataConnection
+          start={nodePositions[0]}
+          end={nodePositions[1]}
+          color={nodeColors[0]}
+        />
+        <DataConnection
+          start={nodePositions[1]}
+          end={nodePositions[2]}
+          color={nodeColors[1]}
+        />
+        <DataConnection
+          start={nodePositions[2]}
+          end={nodePositions[3]}
+          color={nodeColors[2]}
+        />
+        <DataConnection
+          start={nodePositions[3]}
+          end={nodePositions[0]}
+          color={nodeColors[3]}
+        />
 
         <GlowingOrb position={[0, 0, 0]} color="#60a5fa" size={0.5} />
         <GlowingOrb position={[-5, 2, -2]} color="#4ade80" size={0.3} />
