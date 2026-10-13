@@ -1027,3 +1027,21 @@ html.light { --background:150 20% 97%; --foreground:210 25% 12%; --card:0 0% 100
 .search-toolbar-reset { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:48px; padding:0 14px; border-radius:10px; border:1px solid hsl(var(--border)); color:hsl(var(--foreground)); font-size:13px; }
 .search-toolbar-reset:hover:not(:disabled) { background:hsl(var(--accent)); }
 @media(max-width:640px) { .search-toolbar { flex-wrap:wrap; padding:16px; gap:12px; }.search-toolbar-field { flex-basis:100%; }.search-toolbar-sort { flex:1; min-width:0; }.search-toolbar-reset { flex-shrink:0; } }
+
+.ml-group-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:20px; margin:28px 0; }
+.ml-group-open { grid-column:1 / -1; }
+.ml-group h2 { margin:0; }
+.ml-group-count { display:inline-block; margin-top:20px; }
+@media(max-width:640px) { .ml-group-list { grid-template-columns:1fr; } }
+.ml-group { border:1px solid hsl(var(--border)); border-radius:16px; background:hsl(var(--card)); overflow:hidden; }
+.ml-group-toggle { width:100%; display:flex; align-items:center; gap:20px; text-align:left; padding:24px; }
+.ml-group-toggle>span:first-child { flex:1; min-width:0; }
+.ml-group-toggle:disabled { opacity:1; }
+.ml-group-toggle:hover { background:hsl(var(--accent) / .35); }
+.ml-group-title { display:block; font-size:23px; font-weight:600; }
+.ml-group-description { display:block; margin-top:8px; font-size:13px; line-height:1.7; font-weight:400; color:hsl(var(--muted-foreground)); }
+.ml-group-count { font-size:12px; font-weight:500; white-space:nowrap; border:1px solid hsl(var(--border)); border-radius:20px; padding:6px 12px; }
+.ml-group-models { padding:0 24px 24px; }
+.ml-group-models h3 { font-size:21px; line-height:1.4; margin:12px 0; }
+.ml-group-empty { padding:0 24px 24px; color:hsl(var(--muted-foreground)); font-size:14px; }
+@media(max-width:640px) { .ml-group-toggle { flex-wrap:wrap; padding:18px; gap:12px; }.ml-group-toggle>span:first-child { flex-basis:100%; }.ml-group-models { padding:0 14px 14px; }.ml-group-title { font-size:21px; } }

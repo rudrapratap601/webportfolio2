@@ -5,9 +5,14 @@
 | What to change | File |
 | --- | --- |
 | Project cards, filters, images, links, homepage selection | data/projects.ts |
-| ML hub model/method cards | data/ml-implementations.ts |
+| ML hub groups and model/method cards | data/ml-implementations.ts |
 | Experience, skills, biography, education, certificate URLs | data/knowledge.ts |
-| Resume PDF | public/resume.pdf |
+| Two resume downloads | public/Rudrapratap_Sarma_Data_Analytics_Resume.pdf and public/Rudrapratap_Sarma_AI_ML_Resume.pdf |
+| Resume menu labels and paths | components/resume-options.tsx |
+| Editable resume generator | scripts/build_resumes.py |
+| Homepage wording and portrait | app/page.tsx and public/ |
+| Colors, spacing, group-card styles | app/globals.css |
+| ML hub introduction and roadmap | app/projects/ml-from-scratch/page.tsx |
 | New interactive algorithm logic | lib/your-algorithm.ts |
 | New interactive controls and charts | components/your-demo.tsx |
 | New case-study page | app/projects/ml-from-scratch/your-slug/page.tsx |
@@ -44,11 +49,16 @@ Optional actions: `repository` gives Code; `caseStudy` opens an existing interna
 
 ## Add an ML algorithm to the hub
 
+The hub now shows category cards first. Click **Regression** to expand its implementations. **Classification**, **Clustering**, and **Dimensionality Reduction** show “Coming soon” until entries are added. Empty groups can be expanded to see their empty-state message; they do not contain invented models or demos.
+
+Group order follows `mlGroups`; model order follows `mlImplementations` unless the visitor selects alphabetical sorting. Search matches model titles, descriptions, family, group title, and topics, and automatically opens matching groups. Clear the search to return to the normal expandable view.
+
 Add an entry to `mlImplementations` in `data/ml-implementations.ts`:
 
 ```ts
 {
   id: "logistic-regression",
+  group: "classification",
   title: "Logistic Regression",
   family: "Supervised learning / Classification",
   description: "Explain what you implemented and what the reader can explore.",
@@ -58,7 +68,21 @@ Add an entry to `mlImplementations` in `data/ml-implementations.ts`:
 },
 ```
 
-This creates the card and includes it in search and sorting. Add only completed implementations. Leave `caseStudy` out until its page exists; adding a data entry does NOT implement an interactive demo.
+This creates the card inside its group and includes it in search and sorting. Set `group` to `regression`, `classification`, `clustering`, or `dimensionality-reduction`. Group definitions live in `mlGroups` in the same file. Add only completed implementations. Leave `caseStudy` out until its page exists; adding a data entry does NOT implement an interactive demo.
+
+For your first classification model, use `group: "classification"` as above. Its group automatically changes from “Coming soon” to an implementation count. You do not need to edit the rendering component. The `group` field controls placement; `family` is descriptive text and does not move a model between cards.
+
+### Add or rename a group
+
+Add an object inside `mlGroups` (before its closing `] as const`):
+
+```ts
+{ id: "ensemble-learning", title: "Ensemble Learning", description: "Combine models to improve predictions." },
+```
+
+Then use `group: "ensemble-learning"` on the relevant implementations. The allowed TypeScript group values derive from this list automatically. Change `title` to rename a visible heading; keep the `id` stable. If changing or removing an ID, update all implementations referencing it. An empty group remains visible as “Coming soon”.
+
+To remove a model, remove its object from `mlImplementations`. Keep an existing case-study route if you want previously shared links to keep working. For changes to a model, edit its existing object rather than copying it and accidentally creating duplicates.
 
 ### Build the interactive demo
 
@@ -107,7 +131,43 @@ Use a different `id` for every role, including multiple roles at one company. `t
 
 ## Certificates and other content
 
-Edit `certifications` in `data/knowledge.ts`: title, provider, and a public HTTPS `url`. An empty URL disables the certificate button. Replace `public/resume.pdf` to update the download. Do not put API keys into content files or Git; configure secrets in Vercel Environment Variables and local `.env.local`.
+Edit `certifications` in `data/knowledge.ts`: title, provider, and a public HTTPS `url`. An empty or invalid URL disables the certificate button. For example:
+
+```ts
+{
+  title: "Your Certificate Name",
+  provider: "Issuing Organization",
+  url: "https://example.com/your-public-certificate",
+},
+```
+
+Open certificate links in a signed-out browser to check that visitors can access them.
+
+For biography, skills, education, availability, contact links, and learning goals, edit the corresponding fields in `data/knowledge.ts`. Review its `faq` answers too: manually written answers can become outdated when your experience changes. Some page headings and homepage text are written directly in `app/page.tsx` and the relevant `app/<page>/page.tsx`; updating knowledge does not replace every sentence on the site.
+
+The current homepage photo is `public/profile-pic (1).png`, referenced in `app/page.tsx`. Replace that asset or update the image's `src` for a new filename. Check cropping on mobile and desktop.
+
+### Update both resumes
+
+The Resumes menu uses these files, not the older `public/resume.pdf`:
+
+- `public/Rudrapratap_Sarma_Data_Analytics_Resume.pdf`
+- `public/Rudrapratap_Sarma_AI_ML_Resume.pdf`
+
+Replace either PDF with your new version using the same filename. If you rename a file, also update its link in `components/resume-options.tsx`. Check both downloads from the site.
+
+Alternatively, edit the resume wording in `scripts/build_resumes.py` and run `python scripts/build_resumes.py` with Python and ReportLab installed. The script generates both PDFs in `output/pdf/` and copies them to `public/`. It contains its own resume content: changes to `knowledge.ts` or `projects.ts` do not automatically rewrite these PDFs. Review the generated PDFs for accurate details, clipping, and page breaks before publishing.
+
+### AI assistant and contact form configuration
+
+Do not put API keys into content files or Git. Configure secrets in local `.env.local` and separately in Vercel Environment Variables. Local environment files do not configure your deployed site.
+
+- `GROQ_API_KEY`: server-side AI provider key; never add a `NEXT_PUBLIC_` prefix.
+- `GROQ_MODEL` and `CHAT_MODE`: use values supported by the existing chat implementation.
+- `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`: contact form access key.
+- `SITE_URL`: your full production origin, such as `https://rudrapratap-sarma.vercel.app`.
+
+After changing environment variables, restart the local dev server or redeploy on Vercel. Public variables are bundled during the build. When adding a case-study route, also review the explicit route list in `app/sitemap.ts`; new demo routes are not automatically added there.
 
 ## Check and publish
 
@@ -133,4 +193,29 @@ git commit -m "Update portfolio projects"
 git push origin main
 ```
 
-Vercel deploys pushes to main. For experiments, start from a clean checkout and create a feature branch instead, push it, and review a pull request before merging. Do not force-push to resolve conflicts.
+With the existing Git integration and production branch set to `main`, Vercel deploys pushes to main. A local commit alone does not update GitHub or the live site.
+
+For experiments, start from a clean checkout:
+
+```bash
+git switch main
+git pull --ff-only origin main
+git switch -c feature/your-update
+# Edit, review, and check your changes.
+git add data/ml-implementations.ts
+# Also stage the new demo, route, styles, or assets you changed.
+git commit -m "Add a new ML implementation"
+git push -u origin feature/your-update
+```
+
+Open a pull request into `main`, review the preview deployment, then merge when ready. Pushing a feature branch does not normally update production. Do not force-push to resolve conflicts.
+
+### If the live site still looks old
+
+1. Run `git status` and `git log -1 --oneline` to confirm your files were committed on the intended branch.
+2. Check GitHub for the same commit. If it is missing, push the branch; if it is a feature branch, merge its reviewed pull request when ready.
+3. In Vercel Deployments, check the production deployment's commit and build status. Read failed build logs before retrying.
+4. Once the correct deployment is Ready, open its Visit link and check your production domain. Then refresh the browser.
+5. Test the changed feature, resume downloads, AI assistant, and contact form as appropriate. Successful deployment alone does not prove each integration works.
+
+For the grouped ML hub specifically, open `/projects/ml-from-scratch`, confirm separate category cards, expand Regression, and try a model's demo. After adding a classification entry, verify it appears inside Classification rather than Regression.
