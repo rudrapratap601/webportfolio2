@@ -13,7 +13,7 @@ export default function Contact() {
     >
       <div className="contact-layout"><div className="contact-details">
         <article className="content-card">
-          <Mail size={32} className="text-teal-300 mb-6" />
+          <Mail size={32} className="text-blue-400 mb-6" />
           <h2>Start a conversation.</h2>
           <p>Share a role, a project idea, or a question about my work.</p>
           <a

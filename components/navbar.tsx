@@ -17,13 +17,13 @@ export function Navbar() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   return (
-    <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0b1014]/95 backdrop-blur-xl">
+    <header className="site-header fixed inset-x-0 top-0 z-50">
       <nav
         aria-label="Main navigation"
         className="mx-auto flex max-w-[1180px] items-center justify-between px-6 py-5"
       >
         <Link href="/" className="font-mono text-lg font-semibold">
-          rs<span className="text-teal-200">.</span>
+          rs<span className="text-blue-300">.</span>
           <span className="ml-3 text-xs font-normal text-slate-400">
             DATA & INSIGHTS
           </span>
@@ -36,7 +36,7 @@ export function Navbar() {
               aria-current={path === href ? "page" : undefined}
               className={
                 path === href
-                  ? "text-sm text-teal-200"
+                  ? "text-sm text-blue-300"
                   : "text-sm text-slate-400 hover:text-white"
               }
             >
@@ -67,7 +67,7 @@ export function Navbar() {
           onKeyDown={(e) => {
             if (e.key === "Escape") setOpen(false);
           }}
-          className="grid max-h-[80dvh] overflow-auto border-t border-white/10 bg-[#0b1014] px-6 pb-5 lg:hidden"
+          className="grid max-h-[80dvh] overflow-auto border-t px-6 pb-5 lg:hidden"
         >
           {items.map(([label, href]) => (
             <Link

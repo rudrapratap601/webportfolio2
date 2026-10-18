@@ -24,7 +24,7 @@ export function ResumeOptions() {
             download
             className="cursor-pointer py-3"
           >
-            Data Analytics Resume
+            Data Analytics
           </a>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
@@ -33,7 +33,7 @@ export function ResumeOptions() {
             download
             className="cursor-pointer py-3"
           >
-            AI/ML Resume
+            AI/ML
           </a>
         </DropdownMenuItem>
       </DropdownMenuContent>

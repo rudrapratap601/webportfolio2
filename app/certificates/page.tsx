@@ -22,7 +22,7 @@ export default function Certificates() {
           const url = certificateUrl(cert.url);
           return (
           <article className="content-card flex flex-col items-start" key={cert.title}>
-            <Award className="mb-6 text-teal-300" size={30} />
+            <Award className="mb-6 text-blue-400" size={30} />
             <p className="eyebrow">{cert.provider}</p>
             <h2>{cert.title}</h2>
             <div className="mt-auto pt-5">
