@@ -4,6 +4,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
 > **Live Website:** [https://rudrapratap-sarma.vercel.app/](https://rudrapratap-sarma.vercel.app/)
 
@@ -318,3 +319,14 @@ npm start
 ## 📝 Updating Content & Maintenance
 
 For details on how to add new projects, register new ML algorithm case studies, update certifications, or rebuild resumes, please refer to [MAINTENANCE.md](MAINTENANCE.md).
+
+---
+
+## 📄 License & Ownership
+
+Copyright © 2026 **Rudrapratap Sarma**. All rights reserved.
+
+The source code of this portfolio application is released under the [MIT License](LICENSE). 
+
+> **Important Notice on Ownership & Identity:**  
+> All personal assets, photographs, downloadable resumes, educational & professional credentials, personal bio, and original project descriptions belong exclusively to **Rudrapratap Sarma**. Reusing, cloning, or redistributing this personal information, identity, or credentials under someone else's name is strictly prohibited.
