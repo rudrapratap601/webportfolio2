@@ -1,25 +1,26 @@
-MIT License
+# Copyright & Proprietary License
 
-Copyright (c) 2026 Rudrapratap Sarma
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Copyright (c) 2026 Rudrapratap Sarma. All Rights Reserved.
 
 ---
 
-NOTICE: All personal assets, profile photography, resumes, certifications, personal branding, and original portfolio project content remain the exclusive personal and intellectual property of Rudrapratap Sarma. Unauthorized re-use or misrepresentation of personal identity, credentials, or branding is strictly prohibited.
+### Terms of Use
+
+1. **Personal Intellectual Property:**
+   All content within this repository—including but not limited to source code, website design, interactive machine learning algorithm implementations, case studies, project data, documentation, and architecture—is the proprietary intellectual property of **Rudrapratap Sarma**.
+
+2. **Personal Identity & Branding:**
+   All personal assets, profile photography, downloadable resumes, educational and professional credentials, biography, and branding elements are strictly reserved. Unauthorized use, copying, cloning, re-hosting, distribution, or misrepresentation of the author's identity or credentials is strictly prohibited.
+
+3. **Permitted Actions:**
+   - Public viewing and review of this repository for evaluation and recruiting purposes.
+   - Creating a personal fork on GitHub exclusively for personal study and code review, subject to GitHub's standard Terms of Service.
+
+4. **Prohibited Actions:**
+   - You may **not** use, copy, modify, merge, publish, distribute, sublicense, sell, or deploy copies of this project, in whole or in part, as your own portfolio or commercial product without prior written consent from the author.
+   - Re-branding this repository or presenting its projects, case studies, or demos as your own work is strictly prohibited.
+
+---
+
+For licensing inquiries or permission requests, contact:
+**Rudrapratap Sarma** — [rudrapratapsarma549@gmail.com](mailto:rudrapratapsarma549@gmail.com)

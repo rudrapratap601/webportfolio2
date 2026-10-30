@@ -4,7 +4,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg?style=flat-square)](LICENSE.md)
 
 > **Live Website:** [https://rudrapratap-sarma.vercel.app/](https://rudrapratap-sarma.vercel.app/)
 
@@ -324,9 +324,9 @@ For details on how to add new projects, register new ML algorithm case studies, 
 
 ## 📄 License & Ownership
 
-Copyright © 2026 **Rudrapratap Sarma**. All rights reserved.
+Copyright © 2026 **Rudrapratap Sarma**. All Rights Reserved.
 
-The source code of this portfolio application is released under the [MIT License](LICENSE). 
+This repository and all its contents—including the website design, code, interactive ML algorithms, case studies, personal projects, credentials, and documentation—are proprietary and protected under [All Rights Reserved](LICENSE.md).
 
 > **Important Notice on Ownership & Identity:**  
-> All personal assets, photographs, downloadable resumes, educational & professional credentials, personal bio, and original project descriptions belong exclusively to **Rudrapratap Sarma**. Reusing, cloning, or redistributing this personal information, identity, or credentials under someone else's name is strictly prohibited.
+> All personal assets, photographs, downloadable resumes, educational & professional credentials, personal bio, and original project descriptions belong exclusively to **Rudrapratap Sarma**. Reusing, cloning, re-hosting, or redistributing this repository or its content as your own portfolio is strictly prohibited.
