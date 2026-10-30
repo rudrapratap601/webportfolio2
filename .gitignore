@@ -1,36 +1,77 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.js
 
-# testing
+# Testing & Coverage
 /coverage
+*.lcov
+.nyc_output
 
-# next.js
+# Next.js Build Outputs
 /.next/
 /out/
 
-# production
+# Production Builds
 /build
 
-# misc
-.DS_Store
-*.pem
+# Vercel & Netlify Deployment Artifacts
+.vercel
+.netlify
 
-# debug
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment Files & Secrets (Never commit credentials)
+.env
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Web Development / Editor Assistant Metadata
+.bolt/
+
+# Temporary and Build Output Directories
+/output/
+/tmp/
+
+# Python Cache & Virtual Environments (for scripts/build_resumes.py)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Debug and System Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# local env files
-.env
-.env*.local
+# OS-Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+*.pem
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# IDEs & Editors
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
